@@ -13,7 +13,7 @@ const PouwStats = () => {
     axiosInstance: flux_core,
     method: "GET",
     url: "getLeaderBoardStats",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },

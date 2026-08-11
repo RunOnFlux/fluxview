@@ -102,64 +102,23 @@ const FluxApps = (props) => {
     appClicked == name ? setAppClicked("") : setAppClicked(name);
   }
 
-  async function getRunningInstances(name, index) {
-    if (!ownerAppData[index]?.runningApps) {
-      try {
-        const response = await FluxApiApp.get(`location?appname=${name}`);
-        const newList = [];
-        let count = 0;
-        response.data.data.map((item) => {
-          if (item.ip !== "") {
-            newList.push(item.ip);
-            count++;
-          }
-        });
-        const updatedOwnerAppData = [...ownerAppData];
-        if (!updatedOwnerAppData[index]) {
-          updatedOwnerAppData[index] = { runningApps: 0, IPs: 3 };
-        }
-        updatedOwnerAppData[index].runningApps = count ? count : 0;
-        updatedOwnerAppData[index].IPs = count ? count + 10 : 0;
-        //console.log(updatedOwnerAppData);
-        //console.log(newList);
-        setOwnerAppData(updatedOwnerAppData);
-        //console.log(ownerAppData);
-        return {
-          runningApps: count ? count : 0,
-          IPList: newList || [],
-        };
-      } catch (error) {
-        console.log(error);
-      }
-    } else {
-      return -1;
+  async function getRunningInstances(name) {
+    try {
+      const response = await FluxApiApp.get(`location?appname=${name}`);
+      const ipList = (response.data?.data || []).filter((item) => item.ip !== "").map((item) => item.ip);
+      return { runningApps: ipList.length, IPList: ipList };
+    } catch (error) {
+      console.log(error);
+      return { runningApps: 0, IPList: [] };
     }
   }
 
   function updateAppState(list) {
     setUpdating(true);
-    const filteredList = list.data.filter((item) => {
-      if (!useName && item.owner === props.wallet) {
-        return true;
-      }
-      if (useName && item.name.includes(props.wallet)) {
-        return true;
-      }
-      setUpdating(false);
-      return false;
-    });
+    const filteredList = list.data.filter((item) => (useName ? item.name.includes(props.wallet) : item.owner === props.wallet));
 
-    console.log(filteredList);
-
-    const ownerData = filteredList.map(async (item, index) => {
-      setUpdating(true);
-      const { runningApps, IPList } = await getRunningInstances(item.name, ownerAppData.length);
-      setNumInstances((prevState) => prevState + item.instances);
-      setNumRunCount((prevState) => prevState + runningApps);
-
-      if (index >= filteredList.length - 1) {
-        setUpdating(false);
-      }
+    const ownerData = filteredList.map(async (item) => {
+      const { runningApps, IPList } = await getRunningInstances(item.name);
 
       return {
         name: item.name,
@@ -167,7 +126,7 @@ const FluxApps = (props) => {
         runningApps: runningApps,
         height: item.height,
         expire: item.expire,
-        repotag: item?.repotag || item?.compose[0]?.repotag || "enterprise",
+        repotag: item?.repotag || item?.compose?.[0]?.repotag || "enterprise",
         description: item.description,
         cpu: item.cpu || item.compose?.[0]?.cpu || "N/A",
         hdd: item.hdd || item.compose?.[0]?.hdd || "N/A",
@@ -175,14 +134,22 @@ const FluxApps = (props) => {
         ips: IPList,
       };
     });
-    Promise.all(ownerData).then((data) => setOwnerAppData(data));
+
+    Promise.all(ownerData).then((data) => {
+      setOwnerAppData(data);
+      // totals recomputed from the resolved list: incrementing on each item
+      // inflated the counts every time the app list refreshed
+      setNumInstances(data.reduce((total, app) => total + (app.instances || 0), 0));
+      setNumRunCount(data.reduce((total, app) => total + (app.runningApps || 0), 0));
+      setUpdating(false);
+    });
   }
 
   const [appList, error, loading] = useAxios({
     axiosInstance: FluxApiApp,
     method: "GET",
     url: "globalappsspecifications",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -193,7 +160,7 @@ const FluxApps = (props) => {
     axiosInstance: flux_daemon,
     method: "GET",
     url: "getblockcount",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },

@@ -16,15 +16,11 @@ const Benchmarks = ({ fluxip, rank }) => {
   const [node_maint_window, setNode_Maint_Window] = useState("");
   const [node_daemon_sync_status, setNode_Daemon_Sync_Status] = useState("");
 
-  var fluxNodeData = "";
-  var newIP = "";
-
   const nodeIp = fluxip.split(":")[0];
   const nodePort = fluxip.split(":")[1] ? Number(fluxip.split(":")[1]) : 16127;
 
   // Build URL based on access method
-  let nodeUrl = `https://${nodeIp.replace(/\./g, "-")}-${nodePort}.node.api.runonflux.io`;
-  newIP = nodeUrl;
+  const newIP = `https://${nodeIp.replace(/\./g, "-")}-${nodePort}.node.api.runonflux.io`;
 
   const [benchmarks, setBenchmarks] = useState(null);
   const [benchmarksError, setBenchmarksError] = useState("");
@@ -54,12 +50,6 @@ const Benchmarks = ({ fluxip, rank }) => {
   }, [newIP]);
 
   useEffect(() => {
-    if (!benchmarksError && !benchmarksLoading && benchmarks) {
-      fluxNodeData = benchmarks;
-    }
-  }, [benchmarks, benchmarksError, benchmarksLoading]);
-
-  useEffect(() => {
     function updateConfirmed() {
       const benchStatus = benchmarks?.benchmark?.bench?.status;
       if (benchStatus == "CUMULUS" || benchStatus == "NIMBUS" || benchStatus == "STRATUS") {
@@ -82,16 +72,14 @@ const Benchmarks = ({ fluxip, rank }) => {
   }, [benchmarks?.daemon?.info.blocks]);
 
   useEffect(() => {
-    if (benchmarks?.daemon?.info.blocks) {
-      if (daemonHeight - fluxNodeData?.daemon?.info.blocks < 5) {
-        setNode_Daemon_Sync_Status("SYNCED");
-      } else {
-        setNode_Daemon_Sync_Status(`NOT SYNCED ${daemonHeight - fluxNodeData?.daemon?.info.blocks} blocks behind`);
-      }
+    const nodeBlocks = benchmarks?.daemon?.info?.blocks;
+    if (nodeBlocks) {
+      const blocksBehind = daemonHeight - nodeBlocks;
+      setNode_Daemon_Sync_Status(blocksBehind < 5 ? "SYNCED" : `NOT SYNCED ${blocksBehind} blocks behind`);
     } else {
       setNode_Daemon_Sync_Status("N/A");
     }
-  }, [benchmarks?.daemon?.info?.blocks]);
+  }, [benchmarks?.daemon?.info?.blocks, daemonHeight]);
 
   const [card_clicked, setCard_clicked] = useState(false);
 
@@ -112,7 +100,7 @@ const Benchmarks = ({ fluxip, rank }) => {
           <div className="flex flex-col overflow-x-auto w-full">
             <div
               className={`feature-card-tile cursor-pointer ${card_clicked ? "feature-card-base" : "feature-card"}`}
-              style={fluxNodeData?.benchmark?.bench?.status != "failed" && node_daemon_sync_status == "SYNCED" ? {} : { backgroundColor: `maroon` }}
+              style={benchmarks?.benchmark?.bench?.status !== "failed" && node_daemon_sync_status === "SYNCED" ? {} : { backgroundColor: `maroon` }}
               onClick={() => setCard_clicked((prev) => !prev)}
             >
               {

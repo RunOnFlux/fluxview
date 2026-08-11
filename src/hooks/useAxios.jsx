@@ -34,7 +34,9 @@ const useAxios = (configObj) => {
 
     // useEffect cleanup function
     return () => controller.abort();
-  }, [reload]);
+    // requestConfig is a fresh object on every render, so it is deliberately
+    // left out of the dependencies to avoid an endless refetch loop
+  }, [reload, axiosInstance, method, url]);
 
   return [response, error, loading, refetch];
 };

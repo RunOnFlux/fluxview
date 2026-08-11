@@ -11,7 +11,7 @@ const FluxPoolHash = ({ wallet }) => {
     axiosInstance: FluxMinerHash,
     method: "GET",
     url: wallet,
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -22,7 +22,7 @@ const FluxPoolHash = ({ wallet }) => {
     axiosInstance: FluxMinerHash,
     method: "GET",
     url: "balances/".concat(wallet),
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -33,7 +33,7 @@ const FluxPoolHash = ({ wallet }) => {
     axiosInstance: FluxMinerHash,
     method: "GET",
     url: "graph/".concat(wallet).concat(`/86400`),
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -44,7 +44,7 @@ const FluxPoolHash = ({ wallet }) => {
     axiosInstance: FluxMinerPA,
     method: "GET",
     url: "payments/".concat(wallet),
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -55,7 +55,7 @@ const FluxPoolHash = ({ wallet }) => {
     axiosInstance: FluxMiningInfo,
     method: "GET",
     url: "status?q=getMiningInfo",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },

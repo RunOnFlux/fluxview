@@ -114,7 +114,7 @@ const Hashrate = (props) => {
     axiosInstance: fluxAxios,
     method: "GET",
     url: `network-hash?days=${hashtime}`,
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -125,7 +125,7 @@ const Hashrate = (props) => {
     axiosInstance: fluxAxios,
     method: "GET",
     url: `difficulty?days=${hashtime}`,
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },

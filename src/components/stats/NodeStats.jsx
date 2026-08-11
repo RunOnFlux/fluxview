@@ -30,10 +30,6 @@ function estReward(numberNodes, blockReward, rewardTime) {
 }
 
 const NodeStats = () => {
-  let cumulusReward = 1;
-  let nimbusReward = 3.5;
-  let stratusReward = 9;
-
   const apiRef1 = "cumulus-enabled";
   const apiRef2 = "nimbus-enabled";
   const apiRef3 = "stratus-enabled";
@@ -45,7 +41,7 @@ const NodeStats = () => {
     axiosInstance: daemonAxios,
     method: "GET",
     url: "getzelnodecount",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -56,7 +52,7 @@ const NodeStats = () => {
     axiosInstance: flux_stats,
     method: "GET",
     url: "fluxinfo?projection=flux",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -68,7 +64,7 @@ const NodeStats = () => {
     axiosInstance: daemonAxios,
     method: "GET",
     url: "getblocksubsidy",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -77,16 +73,17 @@ const NodeStats = () => {
 
   useEffect(() => {
     if (arcaneNodes?.data && Array.isArray(arcaneNodes.data)) {
-      const count = arcaneNodes.data.filter(item => item.flux?.arcaneVersion !== undefined).length;
+      const count = arcaneNodes.data.filter((item) => item.flux?.arcaneVersion !== undefined).length;
       setArcaneCount(count);
     }
   }, [arcaneNodes?.data]);
 
-  useEffect(() => {
-    cumulusReward = (blockReward?.data?.miner * CUMULUS_PERCENTAGE).toFixed(4);
-    nimbusReward = (blockReward?.data?.miner * NIMBUS_PERCENTAGE).toFixed(4);
-    stratusReward = (blockReward?.data?.miner * STRATUS_PERCENTAGE).toFixed(4);
-  }, [blockReward?.data?.miner]);
+  // derived during render: as locals reassigned inside an effect these never
+  // reached the tooltips, which always showed the hardcoded fallbacks
+  const minerSubsidy = blockReward?.data?.miner;
+  const cumulusReward = minerSubsidy ? minerSubsidy * CUMULUS_PERCENTAGE : 1;
+  const nimbusReward = minerSubsidy ? minerSubsidy * NIMBUS_PERCENTAGE : 3.5;
+  const stratusReward = minerSubsidy ? minerSubsidy * STRATUS_PERCENTAGE : 9;
 
   return (
     <div className="mr-10 flex w-full flex-wrap justify-center items-center p-[2px] mt-2 node-tool-tip">

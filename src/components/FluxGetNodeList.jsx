@@ -14,7 +14,8 @@ export function FluxGetNodeListFunc(props) {
 
   const getStatsList = async (wallets) => {
     try {
-      const validZelids = await wallets.filter((zelid) => zelid.length === 33 || zelid === 34);
+      // trim first: the list arrives comma separated, so entries carry spaces
+      const validZelids = wallets.map((zelid) => zelid.trim()).filter((zelid) => zelid.length === 33 || zelid.length === 34);
       if (validZelids.length === 0) return [];
 
       const ipResponse = await axios.get("https://stats.runonflux.io/fluxinfo?projection=flux.zelid,flux.ip,node.status.last_confirmed_height,node.status.tier", {
@@ -27,11 +28,9 @@ export function FluxGetNodeListFunc(props) {
       let statsList = [];
 
       for (let index = 0; index < validZelids.length; index++) {
-        const walletAddress = validZelids[index].trim() || "";
-        if (walletAddress) {
-          const walletResults = await nodeData.filter((data) => data.flux.zelid === walletAddress);
-          statsList = statsList.concat(walletResults);
-        }
+        const walletAddress = validZelids[index];
+        const walletResults = nodeData.filter((data) => data.flux.zelid === walletAddress);
+        statsList = statsList.concat(walletResults);
       }
       return statsList;
     } catch (error) {
@@ -78,22 +77,22 @@ export function FluxGetNodeListFunc(props) {
     }
   }, [nodeWallet, useZel]);
 
-  const [daemonheight, daemonLoading, daemonError] = useAxios({
+  const [daemonheight, daemonError, daemonLoading] = useAxios({
     axiosInstance: daemonAxios,
     method: "GET",
     url: "getblockcount",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
     },
   });
 
-  const [fluxversion, fluxversionLoading] = useAxios({
+  const [fluxversion, fluxversionError] = useAxios({
     axiosInstance: flux_github,
     method: "GET",
     url: "package.json",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
@@ -137,7 +136,7 @@ export function FluxGetNodeListFunc(props) {
 
   return (
     <div>
-      {loadError && !daemonLoading && !daemonError && ipResults.length === 0 && !fluxversionLoading && fluxversion && (
+      {loadError && !daemonLoading && !daemonError && ipResults.length === 0 && !fluxversionError && fluxversion && (
         <div className="text-white text-2xl text-center">No nodes found on network.</div>
       )}
 

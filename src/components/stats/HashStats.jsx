@@ -11,7 +11,7 @@ const HashStats = () => {
     axiosInstance: daemonAxios,
     method: "GET",
     url: "getmininginfo",
-    requstConfig: {
+    requestConfig: {
       headers: {
         "Content-Language": "en-US",
       },
