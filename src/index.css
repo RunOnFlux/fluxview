@@ -1,0 +1,398 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+@import "react-tooltip/dist/react-tooltip.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --black-gradient: linear-gradient(144.39deg, #6d6d6d -78.47%, #202020 91.61%);
+  --blue-selected: linear-gradient(144.39deg, rgba(0, 121, 180, 1) 0%, rgba(0, 121, 180, 1) 100%);
+  --blue-gradient: linear-gradient(144.39deg, rgba(0, 121, 255, 1) 0%, rgba(0, 121, 255, 1) 100%);
+  --blue-hover: linear-gradient(144.39deg, rgba(0, 121, 255, 1) 0%, rgba(0, 0, 80, 1) 100%);
+  --card-backgroud: linear-gradient(153.47deg, #14101d -341.94%, #14101d 95.11%);
+  --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
+.text-gradient {
+  background: radial-gradient(64.18% 64.18% at 71.16% 35.69%, #def9fa 0.89%, #bef3f5 17.23%, #9dedf0 42.04%, #7de7eb 55.12%, #5ce1e6 71.54%, #33bbcf 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
+
+.text-headers {
+  --tw-text-opacity: 1;
+  color: #169c84;
+}
+
+.text-mining {
+  --tw-text-opacity: 1;
+  color: #169c84;
+  font-size: 32px;
+}
+
+.text-nodes {
+  --tw-text-opacity: 1;
+  color: #0000d0;
+  font-size: 32px;
+}
+
+.text-core {
+  --tw-text-opacity: 1;
+  color: #7fc1ff;
+}
+
+.bg-blue-gradient {
+  background: linear-gradient(180deg, rgba(0, 121, 255, 1) 0%, rgba(9, 73, 121, 1) 100%);
+}
+
+.search-disable {
+  background: linear-gradient(180deg, rgba(0, 121, 255, 1) 0%, rgba(9, 73, 121, 1) 0%);
+}
+
+.bg-black-gradient {
+  background: linear-gradient(144.39deg, #ffffff -278.56%, #6d6d6d -78.47%, #11101d 91.61%);
+}
+
+.bg-black-gradient-2 {
+  background: linear-gradient(-168.39deg, #ffffff -278.56%, #6d6d6d -78.47%, #11101d 91.61%);
+}
+
+.bg-gray-gradient {
+  background: linear-gradient(153.47deg, rgba(255, 255, 255, 0) -341.94%, #14101d 95.11%);
+}
+
+.bg-discount-gradient {
+  background: linear-gradient(125.17deg, #272727 0%, #11101d 100%);
+}
+
+.box-shadow {
+  box-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
+}
+
+.sidebar {
+  -webkit-animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-top 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-top {
+  0% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}
+
+.icon-core-nav {
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  margin: 0.25rem;
+}
+
+.icon-core-nav-selected {
+  font-size: 40px;
+  cursor: pointer;
+  --tw-text-opacity: 1;
+  color: #7fc1ff;
+  margin: 0.25rem;
+}
+
+.icon-core-card {
+  color: white;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.icon-core-title {
+  color: white;
+  font-size: 32px;
+  margin-top: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.game-card-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  margin: 0.25rem /* 4px */;
+  align-items: center;
+}
+
+.game-card-item {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  font-size: 28px;
+  text-align: center;
+}
+
+.feature-card-core {
+  overflow-x: auto;
+  margin: 0.5rem;
+  display: flex;
+  width: 100%;
+  background: var(--card-backgroud);
+  border-radius: 0.2rem;
+}
+
+.feature-card-tile {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 6px;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  border-radius: 12px;
+  overflow-x: auto;
+}
+
+.feature-card-title {
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+  justify-content: center;
+  line-height: 20px;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.feature-card-data {
+  font-family: Poppins, sans-serif;
+  font-weight: 400;
+  justify-content: center;
+  line-height: 20px;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.feature-card {
+  background-color: #202020;
+}
+
+.feature-card:hover {
+  background-color: #000080;
+  box-shadow: var(--card-shadow);
+}
+
+.feature-card-base {
+  background-color: #000080;
+  /* background: var(--blue-gradient); */
+}
+
+.feature-card-failed {
+  background-color: #a00000;
+}
+
+.feature-card-base:hover {
+  background-color: rgb(20, 80, 200);
+  box-shadow: var(--card-shadow);
+}
+
+.feature-card-selected {
+  background-color: #505050;
+  box-shadow: var(--card-shadow);
+}
+
+.feature-card-pa {
+  background-color: #169c84;
+}
+
+.feature-card-node {
+  --tw-text-opacity: 1;
+  background-color: #164040;
+}
+
+.feedback-container .feedback-card:last-child {
+  margin-right: 0px;
+}
+
+.feedback-card {
+  background: transparent;
+}
+
+.feedback-card:hover {
+  background: var(--black-gradient);
+}
+
+.blue__gradient {
+  background: linear-gradient(180deg, rgba(188, 165, 255, 0) 0%, #214d76 100%);
+  filter: blur(123px);
+}
+
+.pink__gradient {
+  background: linear-gradient(90deg, #f4c4f3 0%, #fc67fa 100%);
+  filter: blur(900px);
+}
+
+.white__gradient {
+  background: rgba(255, 255, 255, 0.6);
+  filter: blur(750px);
+}
+
+.footer {
+  background: linear-gradient(153.47deg, #14101d -341.94%, #14101d 95.11%);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 5px;
+}
+
+.card-image {
+  background: linear-gradient(153.47deg, #14101d -341.94%, #14101d 95.11%);
+}
+
+.nav-bar {
+  background: linear-gradient(153.47deg, #14101d -341.94%, #14101d 95.11%);
+}
+
+.nav-icon {
+  height: 59px;
+}
+
+.nav-icon:hover {
+  border-width: 1px;
+  border-color: transparent;
+}
+
+.stat-box {
+  background: linear-gradient(153.47deg, #14101d -341.94%, #14101d 95.11%);
+  border-radius: 0.75rem;
+}
+
+.stat-box-selected {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
+  border-radius: 0.75rem;
+}
+
+.user-node {
+  background: linear-gradient(153.47deg, #14101d -341.94%, #14101d 95.11%);
+  border-width: 2px;
+  border-color: transparent;
+}
+
+.user-node:hover {
+  background: linear-gradient(153.47deg, #808080 -341.94%, #14101d 95.11%);
+  border-width: 2px;
+  border-color: transparent;
+}
+
+.user-node-selected {
+  background: linear-gradient(153.47deg, #14101d -341.94%, #14101d 95.11%);
+  box-shadow: var(--card-shadow);
+  border-color: #606060;
+  border-radius: 5px;
+  border-width: 2px;
+}
+
+.node-tool-tip .tool-tip-extended {
+  background-color: rgb(0, 100, 208);
+  color: #ffffff;
+  font-size: 14px;
+  width: 225px;
+}
+
+.core-tool-tip .tool-tip-core {
+  color: lightblue;
+  font-size: 24px;
+  font-family: Poppins, sans-serif;
+}
+
+.core-tool-tip .tool-tip-core-icon {
+  color: lightblue;
+  font-size: 24px;
+  font-family: Poppins, sans-serif;
+}
+
+.mining-tool-tip .tool-tip-mining {
+  --tw-text-opacity: 1;
+  color: #169c84;
+  font-size: 24px;
+  font-family: Poppins, sans-serif;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

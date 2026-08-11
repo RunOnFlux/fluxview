@@ -1,0 +1,11 @@
+.git
+.DS_Store
+.env
+node_modules
+docker_build_command
+.github
+.vscode
+dist
+Dockerfile
+Dockerfile.terra
+terra-dash
