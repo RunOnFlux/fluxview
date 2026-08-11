@@ -39,11 +39,11 @@ const GameServer = ({ game, type }) => {
         <div className="flex m-2 flex-wrap justify-around">
           <div className="m-1 flex flex-row flex-wrap">
             <BsPersonBadge className="icon-core-title" />
-            <span className="text-core xs:text-[24px] sm:text-[32px]">{`${game.name || <Skeleton />}`}</span>
+            <span className="text-core xs:text-[24px] sm:text-[32px]">{game.name || <Skeleton />}</span>
           </div>
           <div className="m-1 flex flex-row flex-wrap">
             <BsFillHddNetworkFill className="icon-core-title" />
-            <span className="text-core text-[32px]">{`${game.masterIP || <Skeleton />}`}</span>
+            <span className="text-core text-[32px]">{game.masterIP || <Skeleton />}</span>
           </div>
         </div>
         <hr className="m-2 p-1" />
