@@ -9,7 +9,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <div>
+    <div className="page">
       <QueryClientProvider client={queryClient}>
         <DataProvider>
           <Routes>
