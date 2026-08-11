@@ -44,6 +44,8 @@ const PouwLeaderboard = () => {
   const [regionFilter, setRegionFilter] = useState(-1);
   const [search, setSearch] = useState(false);
   const [gpuList, setgpuList] = useState([]);
+  // a ficha completa de cada maquina deixava a pagina com 8600px; passa a abrir por clique
+  const [expanded, setExpanded] = useState(null);
   const inputRef = useRef(null);
   const gpuSelected = useRef(null);
   const regionSelected = useRef(null);
@@ -150,7 +152,7 @@ const PouwLeaderboard = () => {
           name="computerName"
           onChange={() => inputChange(inputRef)}
           placeholder="Filter by machine name..."
-          className="focus-ring py-2 px-2 mr-2 mb-5 font-poppins font-medium xs:text-[14px] ss:text-[16px] md:text-[18px] mm:w-8/12 max-w-md"
+          className="focus-ring py-2 px-2 rounded-[10px] bg-[#14101d] border border-white/20 text-white placeholder:text-dimWhite mr-2 mb-5 font-poppins font-medium xs:text-[14px] ss:text-[16px] md:text-[18px] mm:w-8/12 max-w-md"
         />
         <button
           type="submit"
@@ -176,12 +178,16 @@ const PouwLeaderboard = () => {
         </div>
       </div>
       {fluxCoreLeaderboard?.map((item, index) => {
-        console.log(item);
         return (
           <div key={item.ComputerID} className="mr-10 rounded-2xl flex w-full flex-wrap justify-center items-center p-[2px] mb-10 bg-slate-800">
             <SkeletonTheme baseColor="#14101d" highlightColor="#444" width={200} height={36} count={1} duration={2}>
               <div className="ml-2 mr-2 mb-2 flex flex-col flex-wrap w-full">
-                <div className="flex flex-wrap justify-around">
+                <button
+                  type="button"
+                  aria-expanded={expanded === item.ComputerID}
+                  onClick={() => setExpanded((prev) => (prev === item.ComputerID ? null : item.ComputerID))}
+                  className="focus-ring w-full flex flex-wrap justify-around items-center rounded-xl py-1"
+                >
                   <div className="flex">
                     <BsAward className="icon-core-title" />
                     <span className="text-core text-[32px]">{`${index + 1 || <Skeleton />}`}</span>
@@ -200,122 +206,127 @@ const PouwLeaderboard = () => {
                           : "n/a" || <Skeleton />
                     }`}</span>
                   </div>
-                </div>
-                <hr className="m-2 p-1" />
-                <div className="flex flex-col flex-wrap w-full pr-4">
-                  <div className="icon-core-card">
-                    <BsCpu />
-                  </div>
-                  {item?.Computer?.cpus?.map((cpu, index) => {
-                    return (
-                      <div key={index} className="feature-card-core">
-                        <FeatureCardList
-                          features={[
-                            {
-                              title: "Model",
-                              content: cpu?.model ?? "N/A",
-                            },
-                            {
-                              title: "Cores",
-                              content: cpu?.num_cores ?? "N/A",
-                            },
-                            {
-                              title: "Threads",
-                              content: cpu?.num_threads ?? "N/A",
-                            },
-                            {
-                              title: "Frequency",
-                              content: cpu?.frequency ?? "N/A",
-                            },
-                          ]}
-                        />
+                  <span className="text-dimWhite text-[16px] font-poppins">{expanded === item.ComputerID ? "hide specs" : "show specs"}</span>
+                </button>
+                {expanded === item.ComputerID && (
+                  <>
+                    <hr className="m-2 p-1" />
+                    <div className="flex flex-col flex-wrap w-full pr-4">
+                      <div className="icon-core-card">
+                        <BsCpu />
                       </div>
-                    );
-                  })}
-                  <div className="icon-core-card">
-                    <BsGpuCard />
-                  </div>
-                  {item?.Computer?.gpus?.map((gpu, index) => {
-                    return (
-                      <div key={index} className="feature-card-core">
-                        <FeatureCardList
-                          features={[
-                            {
-                              title: "GPU",
-                              content: gpu.model ?? "N/A",
-                            },
-                            {
-                              title: "vram",
-                              content: gpu.vram ?? "N/A",
-                            },
-                            {
-                              title: "Core Clock",
-                              content: gpu.core_clock ?? "N/A",
-                            },
-                            {
-                              title: "Memory Clock",
-                              content: gpu.memory_clock ?? "N/A",
-                            },
-                          ]}
-                        />
+                      {item?.Computer?.cpus?.map((cpu, index) => {
+                        return (
+                          <div key={index} className="feature-card-core">
+                            <FeatureCardList
+                              features={[
+                                {
+                                  title: "Model",
+                                  content: cpu?.model ?? "N/A",
+                                },
+                                {
+                                  title: "Cores",
+                                  content: cpu?.num_cores ?? "N/A",
+                                },
+                                {
+                                  title: "Threads",
+                                  content: cpu?.num_threads ?? "N/A",
+                                },
+                                {
+                                  title: "Frequency",
+                                  content: cpu?.frequency ?? "N/A",
+                                },
+                              ]}
+                            />
+                          </div>
+                        );
+                      })}
+                      <div className="icon-core-card">
+                        <BsGpuCard />
                       </div>
-                    );
-                  })}
-                  <div className="icon-core-card">
-                    <BsMemory />
-                  </div>
-                  {item?.Computer?.rams?.map((ram, index) => {
-                    return (
-                      <div key={index} className="feature-card-core">
-                        <FeatureCardList
-                          features={[
-                            {
-                              title: "Model",
-                              content: ram.model ?? "N/A",
-                            },
-                            {
-                              title: "Brand",
-                              content: ram.manufacturer ?? "N/A",
-                            },
-                            {
-                              title: "Size",
-                              content: ram.capacity ?? "N/A",
-                            },
-                            {
-                              title: "Speed",
-                              content: ram.max_speed ?? "N/A",
-                            },
-                          ]}
-                        />
+                      {item?.Computer?.gpus?.map((gpu, index) => {
+                        return (
+                          <div key={index} className="feature-card-core">
+                            <FeatureCardList
+                              features={[
+                                {
+                                  title: "GPU",
+                                  content: gpu.model ?? "N/A",
+                                },
+                                {
+                                  title: "vram",
+                                  content: gpu.vram ?? "N/A",
+                                },
+                                {
+                                  title: "Core Clock",
+                                  content: gpu.core_clock ?? "N/A",
+                                },
+                                {
+                                  title: "Memory Clock",
+                                  content: gpu.memory_clock ?? "N/A",
+                                },
+                              ]}
+                            />
+                          </div>
+                        );
+                      })}
+                      <div className="icon-core-card">
+                        <BsMemory />
                       </div>
-                    );
-                  })}
-                  <div className="icon-core-card">
-                    <BsDeviceSsd />
-                  </div>
-                  {item?.Computer?.storages?.map((storage, index) => {
-                    return (
-                      <div key={index} className="feature-card-core">
-                        <FeatureCardList
-                          features={[
-                            {
-                              title: "Storage Model",
-                              content: storage.model ?? "N/A",
-                            },
-                            {
-                              title: "Size",
-                              content: `${storage.capacity} GB` ?? "N/A",
-                            },
-                            {
-                              title: "Free",
-                              content: `${storage.free} GB` ?? "N/A",
-                            },
-                          ]}
-                        />
+                      {item?.Computer?.rams?.map((ram, index) => {
+                        return (
+                          <div key={index} className="feature-card-core">
+                            <FeatureCardList
+                              features={[
+                                {
+                                  title: "Model",
+                                  content: ram.model ?? "N/A",
+                                },
+                                {
+                                  title: "Brand",
+                                  content: ram.manufacturer ?? "N/A",
+                                },
+                                {
+                                  title: "Size",
+                                  content: ram.capacity ?? "N/A",
+                                },
+                                {
+                                  title: "Speed",
+                                  content: ram.max_speed ?? "N/A",
+                                },
+                              ]}
+                            />
+                          </div>
+                        );
+                      })}
+                      <div className="icon-core-card">
+                        <BsDeviceSsd />
                       </div>
-                    );
-                  })}
-                </div>
+                      {item?.Computer?.storages?.map((storage, index) => {
+                        return (
+                          <div key={index} className="feature-card-core">
+                            <FeatureCardList
+                              features={[
+                                {
+                                  title: "Storage Model",
+                                  content: storage.model ?? "N/A",
+                                },
+                                {
+                                  title: "Size",
+                                  content: `${storage.capacity} GB` ?? "N/A",
+                                },
+                                {
+                                  title: "Free",
+                                  content: `${storage.free} GB` ?? "N/A",
+                                },
+                              ]}
+                            />
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </>
+                )}
               </div>
             </SkeletonTheme>
           </div>

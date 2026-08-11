@@ -3,7 +3,8 @@ import axios from "../api/flux_node_list";
 import { useEffect, useContext, useState } from "react";
 import daemonAxios from "../api/flux_daemon";
 import flux_github from "../api/flux_github";
-import Benchmarks from "./Benchmarks";
+import Benchmarks, { NODE_COLUMNS } from "./Benchmarks";
+import { FeatureCardHeader } from "./FeatureCardList";
 import DataContext from "../context/DataContext";
 import { checkIp } from "@/helpers/util";
 
@@ -134,33 +135,25 @@ export function FluxGetNodeListFunc(props) {
     }
   }, [fluxversion?.version, setFluxVersion]);
 
+  const showList = !loadError && !daemonLoading && !daemonError && ipResults.length !== 0 && daemonheight?.data && fluxversion;
+
   return (
     <div>
       {loadError && !daemonLoading && !daemonError && ipResults.length === 0 && !fluxversionError && fluxversion && (
         <div className="text-white text-2xl text-center">No nodes found on network.</div>
       )}
 
-      {!loadError &&
-        !daemonLoading &&
-        !daemonError &&
-        ipResults.length !== 0 &&
-        daemonheight?.data &&
-        fluxversion &&
-        !useZel &&
-        ipResults.map((data) => {
-          return <Benchmarks key={data?.ip.toString()} fluxip={data?.ip} rank={data?.rank} />;
-        })}
+      {/* matches the ml-5/mr-5 that each Benchmarks card carries */}
+      {showList && (
+        <div className="ml-5 mr-5">
+          <FeatureCardHeader titles={NODE_COLUMNS} />
+        </div>
+      )}
 
-      {!loadError &&
-        !daemonLoading &&
-        !daemonError &&
-        ipResults.length !== 0 &&
-        daemonheight?.data &&
-        fluxversion &&
-        useZel &&
-        ipResults?.map((data) => {
-          return <Benchmarks key={data?.flux?.ip.toString()} fluxip={data?.flux?.ip} />;
-        })}
+      {showList &&
+        (useZel
+          ? ipResults.map((data) => <Benchmarks key={data?.flux?.ip.toString()} fluxip={data?.flux?.ip} />)
+          : ipResults.map((data) => <Benchmarks key={data?.ip.toString()} fluxip={data?.ip} rank={data?.rank} />))}
     </div>
   );
 }

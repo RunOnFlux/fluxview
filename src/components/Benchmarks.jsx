@@ -4,6 +4,8 @@ import FeatureCard from "./FeatureCard";
 import FeatureCardList from "./FeatureCardList";
 import DataContext from "../context/DataContext";
 
+export const NODE_COLUMNS = ["IP Address", "Rank", "Tier", "Status", "Daemon", "FluxOS", "Bench", "Maint"];
+
 const Benchmarks = ({ fluxip, rank }) => {
   const { daemonHeight } = useContext(DataContext);
   const { fluxVersion } = useContext(DataContext);
@@ -105,6 +107,7 @@ const Benchmarks = ({ fluxip, rank }) => {
             >
               {
                 <FeatureCardList
+                  asRow
                   features={[
                     {
                       title: "IP Address",

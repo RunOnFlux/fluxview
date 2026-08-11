@@ -4,9 +4,11 @@ import FluxApiApp from "../api/flux_api_apps";
 import flux_daemon from "../api/flux_daemon";
 import FeatureCard from "./FeatureCard";
 import DataContext from "../context/DataContext";
-import FeatureCardList from "./FeatureCardList";
+import FeatureCardList, { FeatureCardHeader } from "./FeatureCardList";
 
 import { FORK_BLOCK_HEIGHT } from "../constants";
+
+const APP_COLUMNS = ["Name", "Instances", "Running", "Expire", "Repo"];
 
 function calculateExpiresOnBlockheight(registerHeight, expire) {
   if (!registerHeight || registerHeight < 0) {
@@ -208,12 +210,14 @@ const FluxApps = (props) => {
         </div>
       ) : ownerAppData.length > 0 ? (
         <div>
+          <FeatureCardHeader titles={APP_COLUMNS} />
           {ownerAppData.map((app, index) => {
             return (
               <div key={index} className="flex flex-col">
                 <div className={`feature-card-tile cursor-pointer ${appClicked === app.name ? "feature-card-base" : "feature-card"}`} onClick={() => appClick(app.name)}>
                   {
                     <FeatureCardList
+                      asRow
                       features={[
                         { title: "Name", content: app.name },
                         { title: "Instances", content: app.instances },

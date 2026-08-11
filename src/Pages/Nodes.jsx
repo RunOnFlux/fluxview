@@ -117,7 +117,7 @@ const Button = (props) => {
           id="wallet"
           name="wallet"
           placeholder={useZel ? "Enter ZelID..." : "Enter wallet address..."}
-          className="py-2 px-2 ml-5 mr-2 mb-5 font-poppins font-medium xs:text-[14px] ss:text-[16px] md:text-[18px] mm:w-8/12 max-w-md"
+          className="focus-ring py-2 px-2 rounded-[10px] bg-[#14101d] border border-white/20 text-white placeholder:text-dimWhite ml-5 mr-2 mb-5 font-poppins font-medium xs:text-[14px] ss:text-[16px] md:text-[18px] mm:w-8/12 max-w-md"
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
 

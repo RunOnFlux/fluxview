@@ -21,7 +21,10 @@ const FeatureCardList = (props) => {
     <div className={"flex-1 flex flex-row ml-2"}>
       {props?.features?.map((feature, index) => (
         <div key={index} className="feature-item mr-2 flex-col w-full">
-          <p className="feature-card-title xs:text-[14px] ss:text-[16px] sm:text-[18px] md:text-[20px]">{feature.title.toUpperCase()}</p>
+          {/* in a table the column titles live in the header, so repeating them
+              on every row is just noise — but they are still the only labels
+              there are once the columns stack on a narrow screen */}
+          <p className={`feature-card-title xs:text-[14px] ss:text-[16px] sm:text-[18px] md:text-[20px] ${props.asRow ? "sm:hidden" : ""}`}>{feature.title.toUpperCase()}</p>
           <p
             className={`feature-card-data mr-2
           ${feature?.link ? "cursor-pointer" : ""}
@@ -35,5 +38,19 @@ const FeatureCardList = (props) => {
     </div>
   );
 };
+
+// column titles for a list of <FeatureCardList asRow>, rendered once above it.
+// Mirrors the row structure so the columns line up.
+export const FeatureCardHeader = ({ titles }) => (
+  <div className="hidden sm:flex feature-card-tile pt-1 pb-1">
+    <div className="flex-1 flex flex-row ml-2">
+      {titles.map((title) => (
+        <div key={title} className="feature-item mr-2 flex-col w-full">
+          <p className="feature-card-title sm:text-[18px] md:text-[20px]">{title.toUpperCase()}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+);
 
 export default FeatureCardList;
