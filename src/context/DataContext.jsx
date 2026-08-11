@@ -18,7 +18,6 @@ function readStoredFlag(key) {
 export const DataProvider = ({ children }) => {
   const [homeitem, setHomeitem] = useState(() => readStored("homeitem", "nodes"));
   const [nodeWallet, setNodeWallet] = useState(() => readStored("nodewallet"));
-  const [miningWallet, setMiningWallet] = useState(() => readStored("miningwallet"));
   const [appZelID, setAppZelID] = useState(() => readStored("appzelid"));
   const [userNodeCount, setUserNodeCount] = useState(0);
   const [nodeConfirmed, setNodeConfirmed] = useState(0);
@@ -39,7 +38,6 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     try {
       localStorage.setItem("nodewallet", nodeWallet ?? "");
-      localStorage.setItem("miningwallet", miningWallet ?? "");
       localStorage.setItem("homeitem", homeitem ?? "nodes");
       localStorage.setItem("appzelid", appZelID ?? "");
       localStorage.setItem("nodezelid", useZel);
@@ -48,7 +46,7 @@ export const DataProvider = ({ children }) => {
     } catch (error) {
       // storage unavailable: preferences simply are not persisted
     }
-  }, [nodeWallet, miningWallet, homeitem, appZelID, useZel, nodeApps, useName]);
+  }, [nodeWallet, homeitem, appZelID, useZel, nodeApps, useName]);
 
   return (
     <DataContext.Provider
@@ -57,8 +55,6 @@ export const DataProvider = ({ children }) => {
         setHomeitem,
         nodeWallet,
         setNodeWallet,
-        miningWallet,
-        setMiningWallet,
         appZelID,
         setAppZelID,
         userNodeCount,
