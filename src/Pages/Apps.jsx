@@ -8,8 +8,11 @@ import { checkZel } from "../helpers/util";
 import DataContext from "../context/DataContext";
 import ReactSwitch from "react-switch";
 import { flux_os } from "@/assets";
+import usePageTitle from "../hooks/usePageTitle";
 
 const ButtonApp = (props) => {
+  usePageTitle("Apps");
+
   const { appZelID, setAppZelID } = useContext(DataContext);
   const { useName, setUseName } = useContext(DataContext);
   const navigate = useNavigate();
@@ -124,9 +127,9 @@ const ButtonApp = (props) => {
 
   return (
     <div id="apps" className="mt-5 mb-12">
-      <div className="flex justify-center mb-2">
+      <h2 className="flex justify-center mb-2">
         <img src={flux_os} className="h-[60px]" alt="Flux OS" />
-      </div>
+      </h2>
 
       <div className="mr-10 flex w-full flex-wrap justify-center items-center p-[2px] mt-5">
         <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
@@ -148,6 +151,9 @@ const ButtonApp = (props) => {
       </div>
 
       <div id="apps" className="flex flex-auto flex-wrap flex-row">
+        <label htmlFor="wallet" className="sr-only">
+          {useName ? "App name" : "Owner ZelID"}
+        </label>
         <input
           ref={inputRef}
           defaultValue={appZelID}
@@ -162,24 +168,28 @@ const ButtonApp = (props) => {
           <button
             type="button"
             style={{ width: "250px" }}
-            className={`py-2 px-2 mb-5 bg-blue-gradient font-poppins ml-8 font-medium text-[18px] text-white outline-none ${props.styles} rounded-[10px]`}
+            className={`focus-ring py-2 px-2 mb-5 bg-blue-gradient font-poppins ml-8 font-medium text-[18px] text-white ${props.styles} rounded-[10px]`}
             onClick={handleSearch}
           >
             {buttonText}
           </button>
 
-          <label className="flex w-20 flex-col ml-2 mr-2 mb-5">
+          <label
+            htmlFor="toggle-name"
+            title={showResults ? "Clear the results to switch between ZelID and name" : undefined}
+            className="flex w-20 flex-col ml-2 mr-2 mb-5 cursor-pointer py-1"
+          >
             <span className="flex justify-center font-poppins ml-2 mr-2 font-medium text-[18px] text-white">Name</span>
             <div className="flex justify-center">
-              <ReactSwitch checked={useName} onChange={handleModeChange} disabled={showResults} />
+              <ReactSwitch id="toggle-name" checked={useName} onChange={handleModeChange} disabled={showResults} />
             </div>
           </label>
         </div>
       </div>
 
-      <div className={`${layout.statBox} stat-box text-headers mm:text-[30px] xs:text-[40px] ss:text-[44px] sm:text-[48px] md:text-[52px] leading-[60px] ml-5 mr-5 mb-2`}>
+      <h1 className={`${layout.statBox} stat-box text-headers mm:text-[30px] xs:text-[40px] ss:text-[44px] sm:text-[48px] md:text-[52px] leading-[60px] ml-5 mr-5 mb-2`}>
         APP DETAILS
-      </div>
+      </h1>
 
       {showResults && inputRef?.current?.value && (
         <FluxApps

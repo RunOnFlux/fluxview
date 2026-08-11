@@ -136,22 +136,26 @@ const PouwLeaderboard = () => {
           <Tooltip id="glmark" className="tool-tip-core-icon" />
         </div>
       </div>
-      <div className="flex flex-wrap text-white text-[40px] justify-center">
+      <h1 className="flex flex-wrap text-white text-[40px] justify-center">
         {computerName.length < 3 ? `Top 10 ${benchmarkType} ${computerName} Benchmarks` : `${benchmarkType} ${computerName} Benchmarks`}
-      </div>
+      </h1>
       <div className="p-1 flex flex-wrap text-black text-[40px] justify-start">
+        <label htmlFor="computerName" className="sr-only">
+          Machine name
+        </label>
         <input
           ref={inputRef}
           type="text"
           id="computerName"
           name="computerName"
           onChange={() => inputChange(inputRef)}
-          className={"py-2 px-2 mr-2 mb-5 font-poppins font-medium xs:text-[14px] ss:text-[16px] md:text-[18px] mm:w-8/12 max-w-md"}
+          placeholder="Filter by machine name..."
+          className="focus-ring py-2 px-2 mr-2 mb-5 font-poppins font-medium xs:text-[14px] ss:text-[16px] md:text-[18px] mm:w-8/12 max-w-md"
         />
         <button
           type="submit"
           style={{ width: "250px" }}
-          className={`py-2 px-2 ${search ? "bg-blue-gradient" : "search-disable cursor-default"} font-poppins mb-5 font-medium text-[18px] text-white outline-none rounded-[10px]`}
+          className={`focus-ring py-2 px-2 ${search ? "bg-blue-gradient" : "search-disable cursor-default"} font-poppins mb-5 font-medium text-[18px] text-white rounded-[10px]`}
           onClick={async () => {
             await machineSearch(inputRef);
           }}

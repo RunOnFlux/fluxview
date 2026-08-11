@@ -7,8 +7,11 @@ import { UserNodes, NodeStats, FluxGetNodeListFunc } from "../components";
 import DataContext from "../context/DataContext";
 import ReactSwitch from "react-switch";
 import { AddressDialog } from "../components/util/AddressDialog";
+import usePageTitle from "../hooks/usePageTitle";
 
 const Button = (props) => {
+  usePageTitle("Nodes");
+
   const { nodeWallet, setNodeWallet } = useContext(DataContext);
   const { userNodeCount, setUserNodeCount } = useContext(DataContext);
   const { setNodeConfirmed } = useContext(DataContext);
@@ -103,6 +106,9 @@ const Button = (props) => {
     <div id="nodes" className="mb-12">
       <NodeStats />
       <div className="flex flex-auto flex-wrap flex-row">
+        <label htmlFor="wallet" className="sr-only">
+          {useZel ? "Node ZelID" : "Node wallet address"}
+        </label>
         <input
           hidden={nodePrivacy}
           ref={inputRef}
@@ -120,7 +126,7 @@ const Button = (props) => {
           <button
             type="submit"
             style={{ width: "250px" }}
-            className={`py-2 px-2 bg-blue-gradient font-poppins ml-4 mb-5 font-medium text-[18px] text-white outline-none ${props.styles} rounded-[10px]`}
+            className={`focus-ring py-2 px-2 bg-blue-gradient font-poppins ml-4 mb-5 font-medium text-[18px] text-white ${props.styles} rounded-[10px]`}
             onClick={handleSearch}
           >
             {buttonText}
@@ -128,32 +134,36 @@ const Button = (props) => {
         </div>
 
         <div className="flex flex-wrap">
-          <label className="flex w-20 flex-col ml-2 mr-2 mb-5">
+          <label
+            htmlFor="toggle-zelid"
+            title={showResults ? "Clear the results to switch between wallet and ZelID" : undefined}
+            className="flex w-20 flex-col ml-2 mr-2 mb-5 cursor-pointer py-1"
+          >
             <span className="flex justify-center font-poppins ml-2 mr-2 font-medium text-[18px] text-white">ZelID</span>
             <div className="flex justify-center">
-              <ReactSwitch checked={useZel} onChange={handleZelIdChange} disabled={showResults} />
+              <ReactSwitch id="toggle-zelid" checked={useZel} onChange={handleZelIdChange} disabled={showResults} />
             </div>
           </label>
 
-          <label className="flex w-20 flex-col ml-2 mr-2 mb-5">
+          <label htmlFor="toggle-privacy" className="flex w-20 flex-col ml-2 mr-2 mb-5 cursor-pointer py-1">
             <span className="flex justify-center font-poppins ml-2 mr-2 font-medium text-[18px] text-white">Privacy</span>
             <div className="flex justify-center">
-              <ReactSwitch checked={nodePrivacy} onChange={() => setNodePrivacy((prev) => !prev)} />
+              <ReactSwitch id="toggle-privacy" checked={nodePrivacy} onChange={() => setNodePrivacy((prev) => !prev)} />
             </div>
           </label>
 
-          <label className="flex w-20 flex-col ml-2 mr-2 mb-5">
+          <label htmlFor="toggle-apps" className="flex w-20 flex-col ml-2 mr-2 mb-5 cursor-pointer py-1">
             <span className="flex justify-center font-poppins ml-2 mr-2 font-medium text-[18px] text-white">Apps</span>
             <div className="flex justify-center">
-              <ReactSwitch checked={nodeApps} onChange={() => setNodeApps((prev) => !prev)} />
+              <ReactSwitch id="toggle-apps" checked={nodeApps} onChange={() => setNodeApps((prev) => !prev)} />
             </div>
           </label>
         </div>
       </div>
 
-      <div className={`${layout.statBox} nav-bar text-headers mm:text-[30px] xs:text-[40px] ss:text-[44px] sm:text-[48px] md:text-[52px] leading-[60px] ml-5 mr-5 mb-2`}>
+      <h1 className={`${layout.statBox} nav-bar text-headers mm:text-[30px] xs:text-[40px] ss:text-[44px] sm:text-[48px] md:text-[52px] leading-[60px] ml-5 mr-5 mb-2`}>
         FLUX NODE LIST
-      </div>
+      </h1>
 
       {showResults && userNodeCount > 0 && <UserNodes userNimbus={nodeTierStats.nimbus} userCumulus={nodeTierStats.cumulus} userStratus={nodeTierStats.stratus} />}
 

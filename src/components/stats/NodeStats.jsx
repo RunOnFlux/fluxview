@@ -89,9 +89,9 @@ const NodeStats = () => {
     <div className="mr-10 flex w-full flex-wrap justify-center items-center p-[2px] mt-2 node-tool-tip">
       <SkeletonTheme baseColor="#14101d" highlightColor="#444" width={200} height={36} count={1} duration={2}>
         <div className="ml-2 mr-2 mb-2 flex flex-col flex-wrap">
-          <div className="flex flex-row justify-center mb-2">
-            <img src={flux_nodes} className="h-[60px]" />
-          </div>
+          <h2 className="flex flex-row justify-center mb-2">
+            <img src={flux_nodes} alt="Flux Nodes" className="h-[60px]" />
+          </h2>
           <div className="flex flex-row flex-wrap justify-center">
             <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
               <div className={`${layout.statBox} text-total text-[24px]`}>Total</div>

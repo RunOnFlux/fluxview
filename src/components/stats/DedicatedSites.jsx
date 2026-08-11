@@ -40,7 +40,7 @@ const DedicatedSites = () => {
 
   return (
     <div className="ml-5 mr-5 mb-16">
-      <div className={`${layout.statBox} nav-bar text-headers mm:text-[30px] xs:text-[40px] ss:text-[44px] sm:text-[48px] leading-[60px] mt-2 mb-2`}>DEDICATED WEBSITES</div>
+      <h1 className={`${layout.statBox} nav-bar text-headers mm:text-[30px] xs:text-[40px] ss:text-[44px] sm:text-[48px] leading-[60px] mt-2 mb-2`}>DEDICATED WEBSITES</h1>
 
       <div className={`${layout.statBox} text-dimWhite text-[18px] mb-4`}>
         {error ? (

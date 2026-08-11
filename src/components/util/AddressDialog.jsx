@@ -42,9 +42,7 @@ export function AddressDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button className={"w-[250px] py-2 px-2 bg-blue-gradient font-poppins ml-4 mb-5 font-medium text-[18px] text-white outline-none ${props.styles} rounded-[10px]"}>
-          CONFIGURE ADDRESSES
-        </button>
+        <button className="focus-ring w-[250px] py-2 px-2 bg-blue-gradient font-poppins ml-4 mb-5 font-medium text-[18px] text-white rounded-[10px]">CONFIGURE ADDRESSES</button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[75%]">
         <form onSubmit={handleSubmit}>
