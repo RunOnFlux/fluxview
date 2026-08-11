@@ -26,9 +26,10 @@ export const navLinks = [
     description: "View FluxEdge stats",
   },
   {
-    id: "gameservers",
-    title: "Gaming",
+    id: "websites",
+    title: "Dedicated Websites",
+    path: "Websites",
     img: flux_app_nav,
-    description: "View Game Servers on Flux",
+    description: "View apps deployed from the dedicated hosting websites",
   },
 ];

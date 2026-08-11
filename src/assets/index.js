@@ -2,21 +2,27 @@ import flux_logo from "./Flux_blue_symbol.png";
 import flux_edge from "./flux-edge-dark.svg";
 import flux_nodes from "./flux-nodes.png";
 import flux_os from "./flux-os-logo.svg";
-import flux_pool from "./flux-pools.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 import flux_3d from "./3dlogolight.gif";
 import flux_node_nav from "./flux_node_nav.png";
-import flux_hash_nav from "./flux_hash_nav.png";
 import flux_app_nav from "./flux_app_nav.png";
 import flux_app_nav_white from "./flux_app_nav_white.png";
-import refresh_button from "./refresh.png";
 import flux_core from "./flux-core.png";
-import palworld_logo from "./palworld_logo.png";
-import minecraft_logo from "./logo-minecraft.svg";
-import enshrouded_logo from "./enshrouded-logo.png";
-import valheim_logo from "./logo_valheim.png";
-import vrising_logo from "./VRISING_LOGO.png";
+
+// banners of the dedicated hosting websites, resized from each site's own
+// /games/<id>/banner.webp (or /apps/<id>/banner.webp)
+import site_palworld from "./sites/palworld.webp";
+import site_minecraft from "./sites/minecraft.webp";
+import site_projectzomboid from "./sites/projectzomboid.webp";
+import site_enshrouded from "./sites/enshrouded.webp";
+import site_fivem from "./sites/fivem.webp";
+import site_rust from "./sites/rust.webp";
+import site_windrose from "./sites/windrose.webp";
+import site_wordpress from "./sites/wordpress.webp";
+import site_openclaw from "./sites/openclaw.webp";
+import site_n8n from "./sites/n8n.webp";
+import site_hermes from "./sites/hermes.webp";
 
 export {
   menu,
@@ -25,17 +31,20 @@ export {
   flux_nodes,
   flux_os,
   flux_edge,
-  flux_pool,
   flux_3d,
   flux_node_nav,
-  flux_hash_nav,
   flux_app_nav,
   flux_app_nav_white,
-  refresh_button,
   flux_core,
-  palworld_logo,
-  minecraft_logo,
-  enshrouded_logo,
-  valheim_logo,
-  vrising_logo,
+  site_palworld,
+  site_minecraft,
+  site_projectzomboid,
+  site_enshrouded,
+  site_fivem,
+  site_rust,
+  site_windrose,
+  site_wordpress,
+  site_openclaw,
+  site_n8n,
+  site_hermes,
 };

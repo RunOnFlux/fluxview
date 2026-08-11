@@ -28,7 +28,7 @@ const Navbar = () => {
                 click(nav.id);
               }}
             >
-              <Link to={nav.title}> {nav?.img ? <img src={nav?.img} alt="flux2" className="nav-icon" title={nav.title} /> : nav.title} </Link>
+              <Link to={nav.path ?? nav.title}> {nav?.img ? <img src={nav?.img} alt="flux2" className="nav-icon" title={nav.title} /> : nav.title} </Link>
             </li>
           ))}
         </ul>
@@ -47,7 +47,7 @@ const Navbar = () => {
                       click(nav.id);
                     }}
                   >
-                    <Link to={nav.title}> {nav.title} </Link>
+                    <Link to={nav.path ?? nav.title}> {nav.title} </Link>
                   </li>
                 ))}
               </ul>
