@@ -16,7 +16,6 @@ import site_palworld from "./sites/palworld.webp";
 import site_minecraft from "./sites/minecraft.webp";
 import site_projectzomboid from "./sites/projectzomboid.webp";
 import site_enshrouded from "./sites/enshrouded.webp";
-import site_fivem from "./sites/fivem.webp";
 import site_rust from "./sites/rust.webp";
 import site_windrose from "./sites/windrose.webp";
 import site_wordpress from "./sites/wordpress.webp";
@@ -40,7 +39,6 @@ export {
   site_minecraft,
   site_projectzomboid,
   site_enshrouded,
-  site_fivem,
   site_rust,
   site_windrose,
   site_wordpress,
