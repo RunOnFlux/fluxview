@@ -11,8 +11,11 @@ function readStored(key, fallback = "") {
   }
 }
 
-function readStoredFlag(key) {
-  return readStored(key) === "true";
+// an absent key means the user never touched the toggle, so it falls back to
+// the default rather than to false
+function readStoredFlag(key, fallback = false) {
+  const stored = readStored(key, null);
+  return stored === null ? fallback : stored === "true";
 }
 
 export const DataProvider = ({ children }) => {
@@ -25,7 +28,8 @@ export const DataProvider = ({ children }) => {
   const [fluxVersion, setFluxVersion] = useState("");
   const [benchVersion, setBenchVersion] = useState("");
   const [useZel, setUseZel] = useState(() => readStoredFlag("nodezelid"));
-  const [useName, setUseName] = useState(() => readStoredFlag("appname"));
+  // searching apps by name is the common case, so it is the default
+  const [useName, setUseName] = useState(() => readStoredFlag("appname", true));
   const [nodePrivacy, setNodePrivacy] = useState(false);
   const [totalCard, setTotalCard] = useState(true);
   const [cumulusCard, setCumulusCard] = useState(false);

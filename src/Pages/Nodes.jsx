@@ -6,6 +6,7 @@ import { layout } from "../style";
 import { UserNodes, NodeStats, FluxGetNodeListFunc } from "../components";
 import DataContext from "../context/DataContext";
 import ReactSwitch from "react-switch";
+import { SegmentedControl } from "../components/ui/segmented-control";
 import { AddressDialog } from "../components/util/AddressDialog";
 import usePageTitle from "../hooks/usePageTitle";
 
@@ -72,11 +73,11 @@ const Button = (props) => {
     }
   }, [showResults, userId, navigate, setNodeWallet, setUserNodeCount, setNodeConfirmed]);
 
-  // Handle ZelID toggle
+  // Handle search mode change
   const handleZelIdChange = useCallback(
-    (val) => {
+    (mode) => {
       if (!showResults) {
-        setUseZel(val);
+        setUseZel(mode === "zelid");
       }
     },
     [showResults, setUseZel]
@@ -105,7 +106,7 @@ const Button = (props) => {
   return (
     <div id="nodes" className="mb-12">
       <NodeStats />
-      <div className="flex flex-auto flex-wrap flex-row">
+      <div className="flex flex-auto flex-wrap flex-row items-center">
         <label htmlFor="wallet" className="sr-only">
           {useZel ? "Node ZelID" : "Node wallet address"}
         </label>
@@ -121,7 +122,7 @@ const Button = (props) => {
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
 
-        <div className="flex flex-wrap">
+        <div className="flex flex-wrap items-center">
           <AddressDialog />
           <button
             type="submit"
@@ -133,30 +134,30 @@ const Button = (props) => {
           </button>
         </div>
 
-        <div className="flex flex-wrap">
-          <label
-            htmlFor="toggle-zelid"
-            title={showResults ? "Clear the results to switch between wallet and ZelID" : undefined}
-            className="flex w-20 flex-col ml-2 mr-2 mb-5 cursor-pointer py-1"
-          >
-            <span className="flex justify-center font-poppins ml-2 mr-2 font-medium text-[18px] text-white">ZelID</span>
-            <div className="flex justify-center">
-              <ReactSwitch id="toggle-zelid" checked={useZel} onChange={handleZelIdChange} disabled={showResults} />
-            </div>
+        {/* every control on this row is a single line of the same height, so the
+            switches sit beside their label instead of underneath it */}
+        <div className="flex flex-wrap items-center gap-3 ml-2 mb-5">
+          <SegmentedControl
+            name="node-search-mode"
+            label="Search nodes by"
+            value={useZel ? "zelid" : "wallet"}
+            onChange={handleZelIdChange}
+            disabled={showResults}
+            disabledTitle="Clear the results to switch between wallet and ZelID"
+            options={[
+              { value: "wallet", label: "Wallet" },
+              { value: "zelid", label: "ZelID" },
+            ]}
+          />
+
+          <label htmlFor="toggle-privacy" className="flex items-center gap-2 h-[46px] cursor-pointer">
+            <span className="font-poppins font-medium text-[16px] text-white">Privacy</span>
+            <ReactSwitch id="toggle-privacy" height={22} width={44} checked={nodePrivacy} onChange={() => setNodePrivacy((prev) => !prev)} />
           </label>
 
-          <label htmlFor="toggle-privacy" className="flex w-20 flex-col ml-2 mr-2 mb-5 cursor-pointer py-1">
-            <span className="flex justify-center font-poppins ml-2 mr-2 font-medium text-[18px] text-white">Privacy</span>
-            <div className="flex justify-center">
-              <ReactSwitch id="toggle-privacy" checked={nodePrivacy} onChange={() => setNodePrivacy((prev) => !prev)} />
-            </div>
-          </label>
-
-          <label htmlFor="toggle-apps" className="flex w-20 flex-col ml-2 mr-2 mb-5 cursor-pointer py-1">
-            <span className="flex justify-center font-poppins ml-2 mr-2 font-medium text-[18px] text-white">Apps</span>
-            <div className="flex justify-center">
-              <ReactSwitch id="toggle-apps" checked={nodeApps} onChange={() => setNodeApps((prev) => !prev)} />
-            </div>
+          <label htmlFor="toggle-apps" className="flex items-center gap-2 h-[46px] cursor-pointer">
+            <span className="font-poppins font-medium text-[16px] text-white">Apps</span>
+            <ReactSwitch id="toggle-apps" height={22} width={44} checked={nodeApps} onChange={() => setNodeApps((prev) => !prev)} />
           </label>
         </div>
       </div>

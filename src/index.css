@@ -275,6 +275,13 @@
   outline-offset: 2px;
 }
 
+/* same ring, for controls whose real input is hidden and whose visible
+   surface is the element right after it (see SegmentedControl) */
+.focus-ring-peer:focus-visible + * {
+  outline: 2px solid #5ce1e6;
+  outline-offset: 2px;
+}
+
 .card-image {
   background: linear-gradient(153.47deg, #14101d -341.94%, #14101d 95.11%);
 }

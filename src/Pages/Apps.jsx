@@ -3,12 +3,16 @@ import FluxApps from "../components/FluxApps";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useParams, useNavigate } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import { layout } from "../style";
 import { checkZel } from "../helpers/util";
 import DataContext from "../context/DataContext";
-import ReactSwitch from "react-switch";
+import { SegmentedControl } from "../components/ui/segmented-control";
 import { flux_os } from "@/assets";
 import usePageTitle from "../hooks/usePageTitle";
+import { globalApps, globalAppLocations } from "../api/query/apps";
 
 const ButtonApp = (props) => {
   usePageTitle("Apps");
@@ -28,6 +32,33 @@ const ButtonApp = (props) => {
   });
 
   const [showResults, setShowResults] = useState(false);
+
+  // network-wide totals, loaded as soon as the page opens so the top counters
+  // are meaningful before (and after) any search is made
+  const { data: allApps, isPending: appsPending } = useQuery({
+    queryKey: ["globalApps"],
+    queryFn: async () => (await globalApps())?.data ?? [],
+  });
+
+  const { data: allLocations, isPending: locationsPending } = useQuery({
+    queryKey: ["globalAppLocations"],
+    queryFn: async () => (await globalAppLocations())?.data ?? [],
+  });
+
+  const globalStats = useMemo(
+    () => ({
+      totalApps: allApps?.length || 0,
+      totalInstances: (allApps || []).reduce((total, app) => total + (app.instances || 0), 0),
+      totalRunning: allLocations?.length || 0,
+    }),
+    [allApps, allLocations]
+  );
+
+  // a search narrows the counters down to that owner/name, otherwise they stay global
+  // (with no search there is no user to count, so USER APPS shows a dash)
+  const displayedStats = useMemo(() => (showResults ? stats : { ...globalStats, userApps: "—" }), [showResults, stats, globalStats]);
+
+  const statsLoading = !showResults && (appsPending || locationsPending);
 
   // Memoize button text
   const buttonText = useMemo(() => {
@@ -85,11 +116,11 @@ const ButtonApp = (props) => {
     }
   }, [showResults, isValidInput, useName, userId, navigate, setAppZelID]);
 
-  // Handle switch toggle
+  // Handle search mode change
   const handleModeChange = useCallback(
-    (val) => {
+    (mode) => {
       if (!showResults) {
-        setUseName(val);
+        setUseName(mode === "name");
       }
     },
     [showResults, setUseName]
@@ -132,22 +163,24 @@ const ButtonApp = (props) => {
       </h2>
 
       <div className="mr-10 flex w-full flex-wrap justify-center items-center p-[2px] mt-5">
-        <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
-          <div className={`${layout.statBox} text-white text-[24px]`}>TOTAL APPS</div>
-          <div className={`${layout.statBox} text-white text-[36px]`}>{stats.totalApps}</div>
-        </div>
-        <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
-          <div className={`${layout.statBox} text-white text-[24px]`}>USER APPS</div>
-          <div className={`${layout.statBox} text-white text-[36px]`}>{stats.userApps}</div>
-        </div>
-        <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
-          <div className={`${layout.statBox} text-white text-[24px]`}>APP INSTANCES</div>
-          <div className={`${layout.statBox} text-white text-[36px]`}>{stats.totalInstances}</div>
-        </div>
-        <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
-          <div className={`${layout.statBox} text-white text-[24px]`}>APPS RUNNING</div>
-          <div className={`${layout.statBox} text-white text-[36px]`}>{stats.totalRunning}</div>
-        </div>
+        <SkeletonTheme baseColor="#14101d" highlightColor="#444" width={200} height={36} count={1} duration={2}>
+          <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
+            <div className={`${layout.statBox} text-white text-[24px]`}>TOTAL APPS</div>
+            <div className={`${layout.statBox} text-white text-[36px]`}>{statsLoading ? <Skeleton /> : displayedStats.totalApps}</div>
+          </div>
+          <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
+            <div className={`${layout.statBox} text-white text-[24px]`}>USER APPS</div>
+            <div className={`${layout.statBox} text-white text-[36px]`}>{displayedStats.userApps}</div>
+          </div>
+          <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
+            <div className={`${layout.statBox} text-white text-[24px]`}>APP INSTANCES</div>
+            <div className={`${layout.statBox} text-white text-[36px]`}>{statsLoading ? <Skeleton /> : displayedStats.totalInstances}</div>
+          </div>
+          <div className="ml-2 mr-2 mb-2 stat-box md:w-[250px] w-[280px]">
+            <div className={`${layout.statBox} text-white text-[24px]`}>APPS RUNNING</div>
+            <div className={`${layout.statBox} text-white text-[36px]`}>{statsLoading ? <Skeleton /> : displayedStats.totalRunning}</div>
+          </div>
+        </SkeletonTheme>
       </div>
 
       <div id="apps" className="flex flex-auto flex-wrap flex-row">
@@ -164,7 +197,7 @@ const ButtonApp = (props) => {
           className="focus-ring py-2 px-2 rounded-[10px] bg-[#14101d] border border-white/20 text-white placeholder:text-dimWhite ml-5 mr-2 mb-5 font-poppins font-medium xs:text-[14px] ss:text-[16px] md:text-[18px] mm:w-8/12 max-w-md"
           onKeyDown={(e) => e.key === "Enter" && handleSearch()}
         />
-        <div className="flex">
+        <div className="flex items-center">
           <button
             type="button"
             style={{ width: "250px" }}
@@ -174,16 +207,19 @@ const ButtonApp = (props) => {
             {buttonText}
           </button>
 
-          <label
-            htmlFor="toggle-name"
-            title={showResults ? "Clear the results to switch between ZelID and name" : undefined}
-            className="flex w-20 flex-col ml-2 mr-2 mb-5 cursor-pointer py-1"
-          >
-            <span className="flex justify-center font-poppins ml-2 mr-2 font-medium text-[18px] text-white">Name</span>
-            <div className="flex justify-center">
-              <ReactSwitch id="toggle-name" checked={useName} onChange={handleModeChange} disabled={showResults} />
-            </div>
-          </label>
+          <SegmentedControl
+            name="app-search-mode"
+            label="Search apps by"
+            className="ml-2 mr-2 mb-5"
+            value={useName ? "name" : "zelid"}
+            onChange={handleModeChange}
+            disabled={showResults}
+            disabledTitle="Clear the results to switch between name and ZelID"
+            options={[
+              { value: "name", label: "Name" },
+              { value: "zelid", label: "ZEL ID" },
+            ]}
+          />
         </div>
       </div>
 
