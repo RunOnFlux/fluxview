@@ -1,4 +1,16 @@
-import { site_palworld, site_minecraft, site_projectzomboid, site_enshrouded, site_rust, site_windrose, site_wordpress, site_openclaw, site_n8n, site_hermes } from "../assets";
+import {
+  site_palworld,
+  site_minecraft,
+  site_projectzomboid,
+  site_enshrouded,
+  site_rust,
+  site_windrose,
+  site_wordpress,
+  site_openclaw,
+  site_n8n,
+  site_hermes,
+  site_fivem,
+} from "../assets";
 
 // One entry per dedicated hosting website (https://<id>.runonflux.com).
 //
@@ -36,7 +48,7 @@ export const dedicatedSites = [
   { id: "enshrouded", name: "Enshrouded", url: "https://enshrouded.runonflux.com", banner: site_enshrouded, prefixes: ["enshrouded"] },
   { id: "rust", name: "Rust", url: "https://rust.runonflux.com", banner: site_rust, prefixes: ["rustserver", "rustserveroxide"] },
   { id: "openclaw", name: "OpenClaw", url: "https://openclaw.runonflux.com", banner: site_openclaw, prefixes: ["openclaw", "openclawpro"] },
-  // FiveM (prefixo "fivem") fica de fora ate ao lancamento em producao
+  { id: "fivem", name: "FiveM", url: "https://fivem.runonflux.com", banner: site_fivem, prefixes: ["fivem"] },
 ];
 
 // `${prefix}${Date.now()}` — Date.now() is 13 digits and stays that way for

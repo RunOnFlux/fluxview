@@ -22,6 +22,7 @@ import site_wordpress from "./sites/wordpress.webp";
 import site_openclaw from "./sites/openclaw.webp";
 import site_n8n from "./sites/n8n.webp";
 import site_hermes from "./sites/hermes.webp";
+import site_fivem from "./sites/fivem.webp";
 
 export {
   menu,
@@ -45,4 +46,5 @@ export {
   site_openclaw,
   site_n8n,
   site_hermes,
+  site_fivem,
 };
