@@ -23,6 +23,7 @@ import site_openclaw from "./sites/openclaw.webp";
 import site_n8n from "./sites/n8n.webp";
 import site_hermes from "./sites/hermes.webp";
 import site_fivem from "./sites/fivem.webp";
+import site_valheim from "./sites/valheim.webp";
 
 export {
   menu,
@@ -47,4 +48,5 @@ export {
   site_n8n,
   site_hermes,
   site_fivem,
+  site_valheim,
 };

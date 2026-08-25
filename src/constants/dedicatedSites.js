@@ -10,6 +10,7 @@ import {
   site_n8n,
   site_hermes,
   site_fivem,
+  site_valheim,
 } from "../assets";
 
 // One entry per dedicated hosting website (https://<id>.runonflux.com).
@@ -49,6 +50,7 @@ export const dedicatedSites = [
   { id: "rust", name: "Rust", url: "https://rust.runonflux.com", banner: site_rust, prefixes: ["rustserver", "rustserveroxide"] },
   { id: "openclaw", name: "OpenClaw", url: "https://openclaw.runonflux.com", banner: site_openclaw, prefixes: ["openclaw", "openclawpro"] },
   { id: "fivem", name: "FiveM", url: "https://fivem.runonflux.com", banner: site_fivem, prefixes: ["fivem"] },
+  { id: "valheim", name: "Valheim", url: "https://valheim.runonflux.com", banner: site_valheim, prefixes: ["valheim"] },
 ];
 
 // `${prefix}${Date.now()}` — Date.now() is 13 digits and stays that way for
