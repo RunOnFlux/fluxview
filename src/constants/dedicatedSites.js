@@ -11,9 +11,15 @@ import {
   site_hermes,
   site_fivem,
   site_valheim,
+  site_terraria,
 } from "../assets";
 
-// One entry per dedicated hosting website (https://<id>.runonflux.com).
+// One entry per dedicated hosting website.
+//
+// The game sites all live in the games hub on the main domain
+// (https://runonflux.com/games/<slug>); the old <id>.runonflux.com hostnames 301 there. The
+// slug is the hub's, not this file's id: Project Zomboid is /games/zomboid. The non-game sites
+// (WordPress, Hermes, n8n, OpenClaw) still have their own subdomain.
 //
 // `prefixes` are the app name prefixes a site writes when it deploys. Every
 // site builds the name as `${prefix}${Date.now()}`, so an app belongs to a site
@@ -33,24 +39,25 @@ import {
 // original casing (MinecraftServer1780... vs minecraftserver1780...), so
 // lowercase is what tells "deployed through the dedicated website" apart.
 export const dedicatedSites = [
-  { id: "palworld", name: "Palworld", url: "https://palworld.runonflux.com", banner: site_palworld, prefixes: ["palworld"] },
+  { id: "palworld", name: "Palworld", url: "https://runonflux.com/games/palworld", banner: site_palworld, prefixes: ["palworld"] },
   {
     id: "minecraft",
     name: "Minecraft",
-    url: "https://minecraft.runonflux.com",
+    url: "https://runonflux.com/games/minecraft",
     banner: site_minecraft,
     prefixes: ["minecraftj", "minecraftb", "minecraftserver", "minecraftbedrockserver"],
   },
   { id: "wordpress", name: "WordPress", url: "https://wordpress.runonflux.com", banner: site_wordpress, prefixes: ["wordpress"] },
   { id: "hermes", name: "Hermes", url: "https://hermes.runonflux.com", banner: site_hermes, prefixes: ["hermesagent", "hermesagentpro"] },
   { id: "n8n", name: "n8n", url: "https://n8n.runonflux.com", banner: site_n8n, prefixes: ["n8nstarter", "n8nstandard", "n8npro"] },
-  { id: "projectzomboid", name: "Project Zomboid", url: "https://projectzomboid.runonflux.com", banner: site_projectzomboid, prefixes: ["projectzomboid"] },
-  { id: "windrose", name: "Windrose", url: "https://windrose.runonflux.com", banner: site_windrose, prefixes: ["windrose"] },
-  { id: "enshrouded", name: "Enshrouded", url: "https://enshrouded.runonflux.com", banner: site_enshrouded, prefixes: ["enshrouded"] },
-  { id: "rust", name: "Rust", url: "https://rust.runonflux.com", banner: site_rust, prefixes: ["rustserver", "rustserveroxide"] },
+  { id: "projectzomboid", name: "Project Zomboid", url: "https://runonflux.com/games/zomboid", banner: site_projectzomboid, prefixes: ["projectzomboid"] },
+  { id: "windrose", name: "Windrose", url: "https://runonflux.com/games/windrose", banner: site_windrose, prefixes: ["windrose"] },
+  { id: "enshrouded", name: "Enshrouded", url: "https://runonflux.com/games/enshrouded", banner: site_enshrouded, prefixes: ["enshrouded"] },
+  { id: "rust", name: "Rust", url: "https://runonflux.com/games/rust", banner: site_rust, prefixes: ["rustserver", "rustserveroxide"] },
   { id: "openclaw", name: "OpenClaw", url: "https://openclaw.runonflux.com", banner: site_openclaw, prefixes: ["openclaw", "openclawpro"] },
-  { id: "fivem", name: "FiveM", url: "https://fivem.runonflux.com", banner: site_fivem, prefixes: ["fivem"] },
-  { id: "valheim", name: "Valheim", url: "https://valheim.runonflux.com", banner: site_valheim, prefixes: ["valheim"] },
+  { id: "fivem", name: "FiveM", url: "https://runonflux.com/games/fivem", banner: site_fivem, prefixes: ["fivem"] },
+  { id: "valheim", name: "Valheim", url: "https://runonflux.com/games/valheim", banner: site_valheim, prefixes: ["valheim"] },
+  { id: "terraria", name: "Terraria", url: "https://runonflux.com/games/terraria", banner: site_terraria, prefixes: ["terraria"] },
 ];
 
 // `${prefix}${Date.now()}` — Date.now() is 13 digits and stays that way for

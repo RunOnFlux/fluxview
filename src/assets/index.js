@@ -24,6 +24,7 @@ import site_n8n from "./sites/n8n.webp";
 import site_hermes from "./sites/hermes.webp";
 import site_fivem from "./sites/fivem.webp";
 import site_valheim from "./sites/valheim.webp";
+import site_terraria from "./sites/terraria.webp";
 
 export {
   menu,
@@ -49,4 +50,5 @@ export {
   site_hermes,
   site_fivem,
   site_valheim,
+  site_terraria,
 };
