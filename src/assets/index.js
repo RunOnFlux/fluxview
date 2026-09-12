@@ -25,6 +25,7 @@ import site_hermes from "./sites/hermes.webp";
 import site_fivem from "./sites/fivem.webp";
 import site_valheim from "./sites/valheim.webp";
 import site_terraria from "./sites/terraria.webp";
+import site_dragonwilds from "./sites/dragonwilds.webp";
 
 export {
   menu,
@@ -51,4 +52,5 @@ export {
   site_fivem,
   site_valheim,
   site_terraria,
+  site_dragonwilds,
 };

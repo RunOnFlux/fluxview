@@ -12,6 +12,7 @@ import {
   site_fivem,
   site_valheim,
   site_terraria,
+  site_dragonwilds,
 } from "../assets";
 
 // One entry per dedicated hosting website.
@@ -58,6 +59,10 @@ export const dedicatedSites = [
   { id: "fivem", name: "FiveM", url: "https://runonflux.com/games/fivem", banner: site_fivem, prefixes: ["fivem"] },
   { id: "valheim", name: "Valheim", url: "https://runonflux.com/games/valheim", banner: site_valheim, prefixes: ["valheim"] },
   { id: "terraria", name: "Terraria", url: "https://runonflux.com/games/terraria", banner: site_terraria, prefixes: ["terraria"] },
+  // "Dragonwilds", not the game's full "RuneScape: Dragonwilds", because that name wraps to two
+  // lines on a 280px card. The prefix is the marketplace app name ("DragonWilds") lowercased,
+  // which is also what the banner art says.
+  { id: "dragonwilds", name: "Dragonwilds", url: "https://runonflux.com/games/dragonwilds", banner: site_dragonwilds, prefixes: ["dragonwilds"] },
 ];
 
 // `${prefix}${Date.now()}` — Date.now() is 13 digits and stays that way for
