@@ -13,6 +13,7 @@ import {
   site_valheim,
   site_terraria,
   site_dragonwilds,
+  site_vrising,
 } from "../assets";
 
 // One entry per dedicated hosting website.
@@ -65,6 +66,9 @@ export const dedicatedSites = [
   // lines on a 280px card. The prefix is the marketplace app name ("DragonWilds") lowercased,
   // which is also what the banner art says.
   { id: "dragonwilds", name: "Dragonwilds", url: "https://runonflux.com/games/dragonwilds", banner: site_dragonwilds, prefixes: ["dragonwilds"] },
+  // The prefix is the marketplace app name ("VRising") lowercased, as the hub's deploy dialog
+  // builds it; the test deploys are named vrising1790277053099 and the like.
+  { id: "vrising", name: "V Rising", url: "https://runonflux.com/games/vrising", banner: site_vrising, prefixes: ["vrising"] },
 ];
 
 // `${prefix}${Date.now()}` — Date.now() is 13 digits and stays that way for
