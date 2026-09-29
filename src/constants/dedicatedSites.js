@@ -14,6 +14,7 @@ import {
   site_terraria,
   site_dragonwilds,
   site_vrising,
+  site_satisfactory,
 } from "../assets";
 
 // One entry per dedicated hosting website.
@@ -69,6 +70,9 @@ export const dedicatedSites = [
   // The prefix is the marketplace app name ("VRising") lowercased, as the hub's deploy dialog
   // builds it; the test deploys are named vrising1790277053099 and the like.
   { id: "vrising", name: "V Rising", url: "https://runonflux.com/games/vrising", banner: site_vrising, prefixes: ["vrising"] },
+  // The prefix is the marketplace app name ("Satisfactory") lowercased, as the hub's deploy
+  // dialog builds it; the test deploy is named satisfactory1790517689678.
+  { id: "satisfactory", name: "Satisfactory", url: "https://runonflux.com/games/satisfactory", banner: site_satisfactory, prefixes: ["satisfactory"] },
 ];
 
 // `${prefix}${Date.now()}` — Date.now() is 13 digits and stays that way for

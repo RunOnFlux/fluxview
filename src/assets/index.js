@@ -27,6 +27,7 @@ import site_valheim from "./sites/valheim.webp";
 import site_terraria from "./sites/terraria.webp";
 import site_dragonwilds from "./sites/dragonwilds.webp";
 import site_vrising from "./sites/vrising.webp";
+import site_satisfactory from "./sites/satisfactory.webp";
 
 export {
   menu,
@@ -55,4 +56,5 @@ export {
   site_terraria,
   site_dragonwilds,
   site_vrising,
+  site_satisfactory,
 };
