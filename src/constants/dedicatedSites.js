@@ -102,8 +102,7 @@ export function countAppsPerSite(apps) {
 
   for (const app of apps || []) {
     const description = typeof app.description === "string" ? app.description : "";
-    const match = descriptionMatchers.find((matcher) => description.includes(matcher.text))
-      || siteMatchers.find((matcher) => matcher.pattern.test(app.name));
+    const match = descriptionMatchers.find((matcher) => description.includes(matcher.text)) || siteMatchers.find((matcher) => matcher.pattern.test(app.name));
     if (match) {
       counts[match.id] += 1;
     }
