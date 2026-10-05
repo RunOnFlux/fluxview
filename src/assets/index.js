@@ -28,6 +28,8 @@ import site_terraria from "./sites/terraria.webp";
 import site_dragonwilds from "./sites/dragonwilds.webp";
 import site_vrising from "./sites/vrising.webp";
 import site_satisfactory from "./sites/satisfactory.webp";
+import site_7daystodie from "./sites/7daystodie.webp";
+import site_ark from "./sites/ark.webp";
 
 export {
   menu,
@@ -57,4 +59,6 @@ export {
   site_dragonwilds,
   site_vrising,
   site_satisfactory,
+  site_7daystodie,
+  site_ark,
 };

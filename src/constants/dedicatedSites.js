@@ -15,6 +15,8 @@ import {
   site_dragonwilds,
   site_vrising,
   site_satisfactory,
+  site_7daystodie,
+  site_ark,
 } from "../assets";
 
 // One entry per dedicated hosting website.
@@ -73,6 +75,12 @@ export const dedicatedSites = [
   // The prefix is the marketplace app name ("Satisfactory") lowercased, as the hub's deploy
   // dialog builds it; the test deploy is named satisfactory1790517689678.
   { id: "satisfactory", name: "Satisfactory", url: "https://runonflux.com/games/satisfactory", banner: site_satisfactory, prefixes: ["satisfactory"] },
+  // The prefix is the marketplace app name ("7DaysToDie") lowercased, as the hub's deploy dialog
+  // builds it; the live deploys are named 7daystodie1790705531162 and the like.
+  { id: "7daystodie", name: "7 Days to Die", url: "https://runonflux.com/games/7-days-to-die", banner: site_7daystodie, prefixes: ["7daystodie"] },
+  // The prefix is the marketplace app name ("ArkSurvivalAscended") lowercased, as the hub's deploy
+  // dialog builds it; the live deploys are named arksurvivalascended1791140248911 and the like.
+  { id: "ark", name: "ARK: Survival Ascended", url: "https://runonflux.com/games/ark", banner: site_ark, prefixes: ["arksurvivalascended"] },
 ];
 
 // `${prefix}${Date.now()}` — Date.now() is 13 digits and stays that way for
