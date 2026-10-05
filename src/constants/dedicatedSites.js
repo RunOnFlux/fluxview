@@ -17,6 +17,7 @@ import {
   site_satisfactory,
   site_7daystodie,
   site_ark,
+  site_orbit,
 } from "../assets";
 
 // One entry per dedicated hosting website.
@@ -40,6 +41,11 @@ import {
 //     of punctuation (n8n -> N8NStarter/N8NStandard/N8NPro, Hermes ->
 //     HermesAgent/HermesAgentPro)
 // A new site, or a new plan on an existing site, means a new entry here.
+//
+// ORBIT IS THE EXCEPTION. It deploys a customer's own repository under a name the customer
+// chooses, so no prefix tells its apps apart; what does is the description it registers every
+// app with, "Orbit deployment — <name>". `description` is that text, matched before any prefix:
+// an Orbit app the customer named like a game deploy (palworld1790...) is still an Orbit app.
 //
 // Matching is case sensitive on purpose. The sites always lowercase the prefix,
 // while the same app deployed straight from the Flux marketplace keeps its
@@ -81,18 +87,23 @@ export const dedicatedSites = [
   // The prefix is the marketplace app name ("ArkSurvivalAscended") lowercased, as the hub's deploy
   // dialog builds it; the live deploys are named arksurvivalascended1791140248911 and the like.
   { id: "ark", name: "ARK: Survival Ascended", url: "https://runonflux.com/games/ark", banner: site_ark, prefixes: ["arksurvivalascended"] },
+  // By description, not by name: see ORBIT IS THE EXCEPTION above.
+  { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
 ];
 
 // `${prefix}${Date.now()}` — Date.now() is 13 digits and stays that way for
 // centuries, so anchoring on digits keeps "palworld16slots..." out of the
 // "palworld" bucket.
 const siteMatchers = dedicatedSites.flatMap((site) => site.prefixes.map((prefix) => ({ id: site.id, pattern: new RegExp(`^${prefix}\\d{13,}$`) })));
+const descriptionMatchers = dedicatedSites.filter((site) => site.description).map((site) => ({ id: site.id, text: site.description }));
 
 export function countAppsPerSite(apps) {
   const counts = Object.fromEntries(dedicatedSites.map((site) => [site.id, 0]));
 
   for (const app of apps || []) {
-    const match = siteMatchers.find((matcher) => matcher.pattern.test(app.name));
+    const description = typeof app.description === "string" ? app.description : "";
+    const match = descriptionMatchers.find((matcher) => description.includes(matcher.text))
+      || siteMatchers.find((matcher) => matcher.pattern.test(app.name));
     if (match) {
       counts[match.id] += 1;
     }

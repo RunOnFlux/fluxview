@@ -30,6 +30,7 @@ import site_vrising from "./sites/vrising.webp";
 import site_satisfactory from "./sites/satisfactory.webp";
 import site_7daystodie from "./sites/7daystodie.webp";
 import site_ark from "./sites/ark.webp";
+import site_orbit from "./sites/orbit.webp";
 
 export {
   menu,
@@ -61,4 +62,5 @@ export {
   site_satisfactory,
   site_7daystodie,
   site_ark,
+  site_orbit,
 };
