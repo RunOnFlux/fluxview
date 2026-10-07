@@ -18,6 +18,7 @@ import {
   site_7daystodie,
   site_ark,
   site_hytale,
+  site_armareforger,
   site_orbit,
 } from "../assets";
 
@@ -91,6 +92,9 @@ export const dedicatedSites = [
   // The prefix is the marketplace app name ("Hytale") lowercased, as the hub's deploy dialog
   // builds it; the live deploys are named hytale1791278027708 and the like.
   { id: "hytale", name: "Hytale", url: "https://runonflux.com/games/hytale", banner: site_hytale, prefixes: ["hytale"] },
+  // The prefix is the marketplace app name ("ArmaReforger") lowercased, as the hub's deploy
+  // dialog builds it.
+  { id: "arma-reforger", name: "Arma Reforger", url: "https://runonflux.com/games/arma-reforger", banner: site_armareforger, prefixes: ["armareforger"] },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
 ];

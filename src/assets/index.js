@@ -31,6 +31,7 @@ import site_satisfactory from "./sites/satisfactory.webp";
 import site_7daystodie from "./sites/7daystodie.webp";
 import site_ark from "./sites/ark.webp";
 import site_hytale from "./sites/hytale.webp";
+import site_armareforger from "./sites/arma-reforger.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -64,5 +65,6 @@ export {
   site_7daystodie,
   site_ark,
   site_hytale,
+  site_armareforger,
   site_orbit,
 };
