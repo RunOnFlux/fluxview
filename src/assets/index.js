@@ -32,6 +32,9 @@ import site_7daystodie from "./sites/7daystodie.webp";
 import site_ark from "./sites/ark.webp";
 import site_hytale from "./sites/hytale.webp";
 import site_armareforger from "./sites/arma-reforger.webp";
+import site_garrysmod from "./sites/garrys-mod.webp";
+import site_factorio from "./sites/factorio.webp";
+import site_unturned from "./sites/unturned.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -66,5 +69,8 @@ export {
   site_ark,
   site_hytale,
   site_armareforger,
+  site_garrysmod,
+  site_factorio,
+  site_unturned,
   site_orbit,
 };

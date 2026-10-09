@@ -19,6 +19,9 @@ import {
   site_ark,
   site_hytale,
   site_armareforger,
+  site_garrysmod,
+  site_factorio,
+  site_unturned,
   site_orbit,
 } from "../assets";
 
@@ -95,6 +98,15 @@ export const dedicatedSites = [
   // The prefix is the marketplace app name ("ArmaReforger") lowercased, as the hub's deploy
   // dialog builds it.
   { id: "arma-reforger", name: "Arma Reforger", url: "https://runonflux.com/games/arma-reforger", banner: site_armareforger, prefixes: ["armareforger"] },
+  // The prefix is the marketplace app name ("GarrysMod") lowercased, as the hub's deploy dialog
+  // builds it; the live deploys are named garrysmod1791... and the like.
+  { id: "garrys-mod", name: "Garry's Mod", url: "https://runonflux.com/games/garrys-mod", banner: site_garrysmod, prefixes: ["garrysmod"] },
+  // The prefix is the marketplace app name ("Factorio") lowercased, as the hub's deploy dialog
+  // builds it; the live deploys are named factorio1791... and the like.
+  { id: "factorio", name: "Factorio", url: "https://runonflux.com/games/factorio", banner: site_factorio, prefixes: ["factorio"] },
+  // The prefix is the marketplace app name ("Unturned") lowercased, as the hub's deploy dialog
+  // builds it; the live deploys are named unturned1791... and the like.
+  { id: "unturned", name: "Unturned", url: "https://runonflux.com/games/unturned", banner: site_unturned, prefixes: ["unturned"] },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
 ];
