@@ -22,6 +22,7 @@ import {
   site_garrysmod,
   site_factorio,
   site_unturned,
+  site_dontstarvetogether,
   site_orbit,
 } from "../assets";
 
@@ -107,6 +108,15 @@ export const dedicatedSites = [
   // The prefix is the marketplace app name ("Unturned") lowercased, as the hub's deploy dialog
   // builds it; the live deploys are named unturned1791... and the like.
   { id: "unturned", name: "Unturned", url: "https://runonflux.com/games/unturned", banner: site_unturned, prefixes: ["unturned"] },
+  // The prefix is the marketplace app name ("DontStarveTogether") lowercased, as the hub's deploy
+  // dialog builds it; the section went live in games-website v1.1.100 (12 October 2026).
+  {
+    id: "dont-starve-together",
+    name: "Don't Starve Together",
+    url: "https://runonflux.com/games/dont-starve-together",
+    banner: site_dontstarvetogether,
+    prefixes: ["dontstarvetogether"],
+  },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
 ];
