@@ -23,6 +23,7 @@ import {
   site_factorio,
   site_unturned,
   site_dontstarvetogether,
+  site_corekeeper,
   site_orbit,
 } from "../assets";
 
@@ -117,6 +118,9 @@ export const dedicatedSites = [
     banner: site_dontstarvetogether,
     prefixes: ["dontstarvetogether"],
   },
+  // The prefix is the marketplace app name ("CoreKeeper") lowercased, as the hub's deploy dialog
+  // builds it; the section went live in games-website v1.1.106 (14 October 2026).
+  { id: "core-keeper", name: "Core Keeper", url: "https://runonflux.com/games/core-keeper", banner: site_corekeeper, prefixes: ["corekeeper"] },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
 ];

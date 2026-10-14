@@ -36,6 +36,7 @@ import site_garrysmod from "./sites/garrys-mod.webp";
 import site_factorio from "./sites/factorio.webp";
 import site_unturned from "./sites/unturned.webp";
 import site_dontstarvetogether from "./sites/dont-starve-together.webp";
+import site_corekeeper from "./sites/core-keeper.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -74,5 +75,6 @@ export {
   site_factorio,
   site_unturned,
   site_dontstarvetogether,
+  site_corekeeper,
   site_orbit,
 };
