@@ -24,6 +24,7 @@ import {
   site_unturned,
   site_dontstarvetogether,
   site_corekeeper,
+  site_tmodloader,
   site_orbit,
 } from "../assets";
 
@@ -121,6 +122,9 @@ export const dedicatedSites = [
   // The prefix is the marketplace app name ("CoreKeeper") lowercased, as the hub's deploy dialog
   // builds it; the section went live in games-website v1.1.106 (14 October 2026).
   { id: "core-keeper", name: "Core Keeper", url: "https://runonflux.com/games/core-keeper", banner: site_corekeeper, prefixes: ["corekeeper"] },
+  // The prefix is the marketplace app name ("tModLoader") lowercased, as the hub's deploy dialog
+  // builds it; the section went live in games-website v1.2.0 (15 October 2026).
+  { id: "tmodloader", name: "tModLoader", url: "https://runonflux.com/games/tmodloader", banner: site_tmodloader, prefixes: ["tmodloader"] },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
 ];
