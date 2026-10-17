@@ -26,6 +26,7 @@ import {
   site_corekeeper,
   site_tmodloader,
   site_theisle,
+  site_eurotrucksimulator2,
   site_orbit,
 } from "../assets";
 
@@ -129,6 +130,16 @@ export const dedicatedSites = [
   // The prefix is the marketplace app name ("TheIsle") lowercased, as the hub's deploy dialog
   // builds it; the section went live in games-website v1.3.0 (16 October 2026).
   { id: "the-isle", name: "The Isle", url: "https://runonflux.com/games/the-isle", banner: site_theisle, prefixes: ["theisle"] },
+  // One section for two marketplace apps on one image: the prefixes are both app names
+  // ("EuroTruckSimulator2", "AmericanTruckSimulator") lowercased, as the hub's deploy dialog builds
+  // them; the section went live in games-website v1.4.0 (17 October 2026).
+  {
+    id: "euro-truck-simulator-2",
+    name: "Euro Truck Simulator 2",
+    url: "https://runonflux.com/games/euro-truck-simulator-2",
+    banner: site_eurotrucksimulator2,
+    prefixes: ["eurotrucksimulator2", "americantrucksimulator"],
+  },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
 ];

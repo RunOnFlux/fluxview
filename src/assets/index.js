@@ -39,6 +39,7 @@ import site_dontstarvetogether from "./sites/dont-starve-together.webp";
 import site_corekeeper from "./sites/core-keeper.webp";
 import site_tmodloader from "./sites/tmodloader.webp";
 import site_theisle from "./sites/the-isle.webp";
+import site_eurotrucksimulator2 from "./sites/euro-truck-simulator-2.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -80,5 +81,6 @@ export {
   site_corekeeper,
   site_tmodloader,
   site_theisle,
+  site_eurotrucksimulator2,
   site_orbit,
 };
