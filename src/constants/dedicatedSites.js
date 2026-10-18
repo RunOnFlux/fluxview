@@ -27,6 +27,7 @@ import {
   site_tmodloader,
   site_theisle,
   site_eurotrucksimulator2,
+  site_teamfortress2,
   site_orbit,
 } from "../assets";
 
@@ -139,6 +140,15 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/euro-truck-simulator-2",
     banner: site_eurotrucksimulator2,
     prefixes: ["eurotrucksimulator2", "americantrucksimulator"],
+  },
+  // The prefix is the marketplace app name ("TeamFortress2") lowercased, as the hub's deploy dialog
+  // builds it; the section went live in games-website v1.5.0 (18 October 2026).
+  {
+    id: "team-fortress-2",
+    name: "Team Fortress 2",
+    url: "https://runonflux.com/games/team-fortress-2",
+    banner: site_teamfortress2,
+    prefixes: ["teamfortress2"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
