@@ -28,6 +28,7 @@ import {
   site_theisle,
   site_eurotrucksimulator2,
   site_teamfortress2,
+  site_arksurvivalevolved,
   site_orbit,
 } from "../assets";
 
@@ -149,6 +150,16 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/team-fortress-2",
     banner: site_teamfortress2,
     prefixes: ["teamfortress2"],
+  },
+  // The prefix is the marketplace app name ("ArkSurvivalEvolved") lowercased, as the hub's deploy
+  // dialog builds it; the section went live in games-website v1.6.0 (19 October 2026). It and ARK:
+  // Survival Ascended's "arksurvivalascended" part after "arksurvival", so neither prefixes the other.
+  {
+    id: "ark-survival-evolved",
+    name: "ARK: Survival Evolved",
+    url: "https://runonflux.com/games/ark-survival-evolved",
+    banner: site_arksurvivalevolved,
+    prefixes: ["arksurvivalevolved"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
