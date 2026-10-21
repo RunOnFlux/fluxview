@@ -29,6 +29,7 @@ import {
   site_eurotrucksimulator2,
   site_teamfortress2,
   site_arksurvivalevolved,
+  site_vintagestory,
   site_orbit,
 } from "../assets";
 
@@ -160,6 +161,15 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/ark-survival-evolved",
     banner: site_arksurvivalevolved,
     prefixes: ["arksurvivalevolved"],
+  },
+  // The prefix is the marketplace app name ("VintageStory") lowercased, as the hub's deploy dialog
+  // builds it; the section went live in games-website v1.7.0 (21 October 2026).
+  {
+    id: "vintage-story",
+    name: "Vintage Story",
+    url: "https://runonflux.com/games/vintage-story",
+    banner: site_vintagestory,
+    prefixes: ["vintagestory"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
