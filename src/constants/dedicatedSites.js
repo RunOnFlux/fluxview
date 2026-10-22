@@ -30,6 +30,7 @@ import {
   site_teamfortress2,
   site_arksurvivalevolved,
   site_vintagestory,
+  site_beammp,
   site_orbit,
 } from "../assets";
 
@@ -170,6 +171,15 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/vintage-story",
     banner: site_vintagestory,
     prefixes: ["vintagestory"],
+  },
+  // The prefix is the marketplace app name ("BeamMP") lowercased, as the hub's deploy dialog builds
+  // it; the section went live in games-website v1.8.0 (22 October 2026).
+  {
+    id: "beammp",
+    name: "BeamMP",
+    url: "https://runonflux.com/games/beammp",
+    banner: site_beammp,
+    prefixes: ["beammp"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
