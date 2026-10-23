@@ -31,6 +31,7 @@ import {
   site_arksurvivalevolved,
   site_vintagestory,
   site_beammp,
+  site_soulmask,
   site_orbit,
 } from "../assets";
 
@@ -180,6 +181,15 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/beammp",
     banner: site_beammp,
     prefixes: ["beammp"],
+  },
+  // The prefix is the marketplace app name ("Soulmask") lowercased, as the hub's deploy dialog
+  // builds it; the section went live in games-website v1.9.0 (23 October 2026).
+  {
+    id: "soulmask",
+    name: "Soulmask",
+    url: "https://runonflux.com/games/soulmask",
+    banner: site_soulmask,
+    prefixes: ["soulmask"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },

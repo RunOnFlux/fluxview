@@ -44,6 +44,7 @@ import site_teamfortress2 from "./sites/team-fortress-2.webp";
 import site_arksurvivalevolved from "./sites/ark-survival-evolved.webp";
 import site_vintagestory from "./sites/vintage-story.webp";
 import site_beammp from "./sites/beammp.webp";
+import site_soulmask from "./sites/soulmask.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -90,5 +91,6 @@ export {
   site_arksurvivalevolved,
   site_vintagestory,
   site_beammp,
+  site_soulmask,
   site_orbit,
 };
