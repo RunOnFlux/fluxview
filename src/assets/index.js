@@ -45,6 +45,7 @@ import site_arksurvivalevolved from "./sites/ark-survival-evolved.webp";
 import site_vintagestory from "./sites/vintage-story.webp";
 import site_beammp from "./sites/beammp.webp";
 import site_soulmask from "./sites/soulmask.webp";
+import site_conanexiles from "./sites/conan-exiles.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -92,5 +93,6 @@ export {
   site_vintagestory,
   site_beammp,
   site_soulmask,
+  site_conanexiles,
   site_orbit,
 };
