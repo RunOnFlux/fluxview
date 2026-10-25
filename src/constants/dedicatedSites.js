@@ -33,6 +33,7 @@ import {
   site_beammp,
   site_soulmask,
   site_conanexiles,
+  site_sonsoftheforest,
   site_orbit,
 } from "../assets";
 
@@ -200,6 +201,15 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/conan-exiles",
     banner: site_conanexiles,
     prefixes: ["conanexiles"],
+  },
+  // The prefix is the marketplace app name ("SonsOfTheForest") lowercased, as the hub's deploy dialog
+  // builds it; the section went live on 25 October 2026.
+  {
+    id: "sons-of-the-forest",
+    name: "Sons of the Forest",
+    url: "https://runonflux.com/games/sons-of-the-forest",
+    banner: site_sonsoftheforest,
+    prefixes: ["sonsoftheforest"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
