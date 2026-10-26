@@ -47,6 +47,7 @@ import site_beammp from "./sites/beammp.webp";
 import site_soulmask from "./sites/soulmask.webp";
 import site_conanexiles from "./sites/conan-exiles.webp";
 import site_sonsoftheforest from "./sites/sons-of-the-forest.webp";
+import site_counterstrike2 from "./sites/counter-strike-2.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -96,5 +97,6 @@ export {
   site_soulmask,
   site_conanexiles,
   site_sonsoftheforest,
+  site_counterstrike2,
   site_orbit,
 };

@@ -34,6 +34,7 @@ import {
   site_soulmask,
   site_conanexiles,
   site_sonsoftheforest,
+  site_counterstrike2,
   site_orbit,
 } from "../assets";
 
@@ -210,6 +211,15 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/sons-of-the-forest",
     banner: site_sonsoftheforest,
     prefixes: ["sonsoftheforest"],
+  },
+  // The prefix is the marketplace app name ("CounterStrike2") lowercased, as the hub's deploy dialog
+  // builds it; the section went live on 26 October 2026.
+  {
+    id: "counter-strike-2",
+    name: "Counter-Strike 2",
+    url: "https://runonflux.com/games/counter-strike-2",
+    banner: site_counterstrike2,
+    prefixes: ["counterstrike2"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
