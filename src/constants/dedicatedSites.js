@@ -35,6 +35,7 @@ import {
   site_conanexiles,
   site_sonsoftheforest,
   site_counterstrike2,
+  site_abioticfactor,
   site_orbit,
 } from "../assets";
 
@@ -220,6 +221,14 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/counter-strike-2",
     banner: site_counterstrike2,
     prefixes: ["counterstrike2"],
+  },
+  // The prefix is the marketplace app name ("AbioticFactor") lowercased; the section went live on 27 October 2026.
+  {
+    id: "abiotic-factor",
+    name: "Abiotic Factor",
+    url: "https://runonflux.com/games/abiotic-factor",
+    banner: site_abioticfactor,
+    prefixes: ["abioticfactor"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
