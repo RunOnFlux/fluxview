@@ -49,6 +49,7 @@ import site_conanexiles from "./sites/conan-exiles.webp";
 import site_sonsoftheforest from "./sites/sons-of-the-forest.webp";
 import site_counterstrike2 from "./sites/counter-strike-2.webp";
 import site_abioticfactor from "./sites/abiotic-factor.webp";
+import site_scum from "./sites/scum.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -100,5 +101,6 @@ export {
   site_sonsoftheforest,
   site_counterstrike2,
   site_abioticfactor,
+  site_scum,
   site_orbit,
 };

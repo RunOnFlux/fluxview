@@ -36,6 +36,7 @@ import {
   site_sonsoftheforest,
   site_counterstrike2,
   site_abioticfactor,
+  site_scum,
   site_orbit,
 } from "../assets";
 
@@ -229,6 +230,14 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/abiotic-factor",
     banner: site_abioticfactor,
     prefixes: ["abioticfactor"],
+  },
+  // The prefix is the marketplace app name ("Scum") lowercased; the section went live on 31 October 2026.
+  {
+    id: "scum",
+    name: "SCUM",
+    url: "https://runonflux.com/games/scum",
+    banner: site_scum,
+    prefixes: ["scum"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
