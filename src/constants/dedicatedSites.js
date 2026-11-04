@@ -38,6 +38,7 @@ import {
   site_abioticfactor,
   site_scum,
   site_theforest,
+  site_icarus,
   site_orbit,
 } from "../assets";
 
@@ -247,6 +248,14 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/the-forest",
     banner: site_theforest,
     prefixes: ["theforest"],
+  },
+  // The prefix is the marketplace app name ("Icarus") lowercased; the section went live on 4 November 2026.
+  {
+    id: "icarus",
+    name: "Icarus",
+    url: "https://runonflux.com/games/icarus",
+    banner: site_icarus,
+    prefixes: ["icarus"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
