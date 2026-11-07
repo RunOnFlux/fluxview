@@ -52,6 +52,7 @@ import site_abioticfactor from "./sites/abiotic-factor.webp";
 import site_scum from "./sites/scum.webp";
 import site_theforest from "./sites/the-forest.webp";
 import site_icarus from "./sites/icarus.webp";
+import site_killingfloor2 from "./sites/killing-floor-2.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -106,5 +107,6 @@ export {
   site_scum,
   site_theforest,
   site_icarus,
+  site_killingfloor2,
   site_orbit,
 };

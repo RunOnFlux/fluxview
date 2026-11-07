@@ -39,6 +39,7 @@ import {
   site_scum,
   site_theforest,
   site_icarus,
+  site_killingfloor2,
   site_orbit,
 } from "../assets";
 
@@ -256,6 +257,14 @@ export const dedicatedSites = [
     url: "https://runonflux.com/games/icarus",
     banner: site_icarus,
     prefixes: ["icarus"],
+  },
+  // The prefix is the marketplace app name ("KillingFloor2") lowercased; the section went live on 7 November 2026.
+  {
+    id: "killing-floor-2",
+    name: "Killing Floor 2",
+    url: "https://runonflux.com/games/killing-floor-2",
+    banner: site_killingfloor2,
+    prefixes: ["killingfloor2"],
   },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
