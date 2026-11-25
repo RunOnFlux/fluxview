@@ -53,6 +53,7 @@ import site_scum from "./sites/scum.webp";
 import site_theforest from "./sites/the-forest.webp";
 import site_icarus from "./sites/icarus.webp";
 import site_killingfloor2 from "./sites/killing-floor-2.webp";
+import site_ghost from "./sites/ghost.webp";
 import site_orbit from "./sites/orbit.webp";
 
 export {
@@ -108,5 +109,6 @@ export {
   site_theforest,
   site_icarus,
   site_killingfloor2,
+  site_ghost,
   site_orbit,
 };

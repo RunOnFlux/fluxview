@@ -40,6 +40,7 @@ import {
   site_theforest,
   site_icarus,
   site_killingfloor2,
+  site_ghost,
   site_orbit,
 } from "../assets";
 
@@ -266,6 +267,8 @@ export const dedicatedSites = [
     banner: site_killingfloor2,
     prefixes: ["killingfloor2"],
   },
+  // Hosting for Ghost, a section of the apps hub. The prefix is the marketplace app name ("Ghost") lowercased; a name must be the prefix plus a timestamp, so ghostddns and ghostflux do not match.
+  { id: "ghost", name: "Ghost", url: "https://runonflux.com/apps/ghost", banner: site_ghost, prefixes: ["ghost"] },
   // By description, not by name: see ORBIT IS THE EXCEPTION above.
   { id: "orbit", name: "Orbit", url: "https://runonflux.com/apps/orbit", banner: site_orbit, prefixes: [], description: "Orbit deployment" },
 ];
